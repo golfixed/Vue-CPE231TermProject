@@ -1,0 +1,25 @@
+thanks for using faviconit!
+copy the files to your site and add this code inside the HTML <HEAD> tag:
+
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="headico/busifriend.ico?v=1.0">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="headico/busifriend.ico?v=1.0">
+	<link rel="icon" type="image/png" sizes="196x196" href="headico/busifriend-192.png?v=1.0">
+	<link rel="icon" type="image/png" sizes="160x160" href="headico/busifriend-160.png?v=1.0">
+	<link rel="icon" type="image/png" sizes="96x96" href="headico/busifriend-96.png?v=1.0">
+	<link rel="icon" type="image/png" sizes="64x64" href="headico/busifriend-64.png?v=1.0">
+	<link rel="icon" type="image/png" sizes="32x32" href="headico/busifriend-32.png?v=1.0">
+	<link rel="icon" type="image/png" sizes="16x16" href="headico/busifriend-16.png?v=1.0">
+	<link rel="apple-touch-icon" href="headico/busifriend-57.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="114x114" href="headico/busifriend-114.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="72x72" href="headico/busifriend-72.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="144x144" href="headico/busifriend-144.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="60x60" href="headico/busifriend-60.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="120x120" href="headico/busifriend-120.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="76x76" href="headico/busifriend-76.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="152x152" href="headico/busifriend-152.png?v=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="headico/busifriend-180.png?v=1.0">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="headico/busifriend-144.png?v=1.0">
+	<meta name="msapplication-config" content="headico/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
