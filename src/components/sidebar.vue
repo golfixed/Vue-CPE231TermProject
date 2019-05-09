@@ -95,20 +95,20 @@ ul {
   padding-left: 0px;
 }
 .sidebar-li {
-  height: 40px;
+  height: 50px;
   color: #5f5f5f;
   border: 1px solid transparent;
   padding: 0px 20px;
 }
 .sidebar-li:hover {
-  height: 40px;
+  height: 50px;
   background-color: #207fd0;
   color: white;
   transition: all 0.3s;
   border: 1px solid transparent;
 }
 .router-link-exact-active > .sidebar-li{
-  height: 40px;
+  height: 50px;
   background-color: #207fd0;
   color: white;
   transition: all 0.3s;
