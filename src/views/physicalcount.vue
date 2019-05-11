@@ -25,7 +25,7 @@
 <script>
 import layout_main from "@/layouts/main.vue";
 export default {
-    name: 'phy count',
+    name: 'phycount',
   created() {
     this.$emit(`update:layout`, layout_main);
   }
