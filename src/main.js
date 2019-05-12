@@ -5,11 +5,11 @@ import App from './App'
 import router from './router'
 import store from './store'
 import VueGraph from 'vue-graph'
-// import VueDropdown from 'vue-dynamic-dropdown'
+import VueGoogleCharts from 'vue-google-charts'
 
 Vue.config.productionTip = false
+Vue.use(VueGoogleCharts)
 Vue.use(VueGraph)
-// Vue.component('vue-dropdown', VueDropdown);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

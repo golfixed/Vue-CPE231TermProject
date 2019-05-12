@@ -4,18 +4,18 @@
       <h3 class="page-title">{{pagename}}</h3>
     </div>
     <div class="toolbar-div-right">
-        <titem icon="fa fa-sync" label="refresh" />
-        <titem icon="fa fa-sign-out-alt" label="log out" />
+        <toolbaritem icon="fa fa-sync" label="refresh" />
+        <toolbaritem icon="fa fa-sign-out-alt" label="log out" />
     </div>
   </div>
 </template>
 
 <script>
-import titem from "@/components/toolbar-item.vue"
+import toolbaritem from "@/components/toolbar-item.vue"
 export default {
   name: "toolbar",
   components:{
-      titem
+      toolbaritem
   },
   props: ['pagename'] 
 };
