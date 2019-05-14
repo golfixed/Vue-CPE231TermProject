@@ -59,11 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.home-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px auto;
-}
+
 .page-display {
   padding: 15px;
   margin: 0;

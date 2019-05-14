@@ -5,7 +5,7 @@
         <img class="sidebar-logo" src="/static/img/logo_blue.png">
       </div>
     </div>
-    <div style="overflow:scroll;padding:0px;">
+    <div style="overflow:scroll;padding:0px;background-color: rgb(28, 99, 171);">
       <ul>
         <sidebaritem linkto="/" icon="fas fa-home" label="Home"/>
         <sidebaritem linkto="/document" icon="fas fa-file-alt" label="Document"/>
@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .sidebar-display {
   display: grid;
-  grid-template-rows: 200px calc(100vh - 200px);
+  grid-template-rows: 200px calc(100vh - 250px);
 }
 .sidebar-logo-div {
   width: 200px;

@@ -36,11 +36,25 @@ export default {
   margin: 0;
   padding: 0;
 }
+.home-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px auto;
+}
 .all-font {
   font-family: "Roboto", sans-serif;
 }
 a:hover {
   text-decoration: none !important;
 }
-
+.section-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.textbox {
+  width: 250px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 30px;
+}
 </style>

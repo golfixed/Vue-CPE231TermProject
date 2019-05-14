@@ -25,11 +25,12 @@ ul {
 }
 .sidebar-li {
   height: 50px;
-  color: #5f5f5f;
+  color: #f9f9f9c2;
   border: 1px solid transparent;
   padding: 0px 20px;
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 .sidebar-li:hover {
   height: 50px;
@@ -44,7 +45,6 @@ ul {
   color: white;
   transition: all 0.3s;
   border: 1px solid transparent;
-  font-weight: bold;
 }
 .sidebar-icon {
   font-size: 20px;
