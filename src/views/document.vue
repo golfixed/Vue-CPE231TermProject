@@ -49,211 +49,6 @@
                 <td>ABCD</td>
                 <td>13/10/2019</td>
               </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
             </tbody>
             <tr>
               <td style="width:360px;">
@@ -263,7 +58,108 @@
           </table>
         </div>
       </div>
-      <div style="display: flex; justify-content: center; align-items: center;">viewing area</div>
+      <div class="viewing-div">
+        <div class="doc-paper">
+          <form>
+            <div class="doc-paper-grid">
+              <div class="doc-paper-header">
+                <div>
+                  <img src="/static/img/logo_grey.png" style="height:70px;">
+                </div>
+                <div>
+                  <h5>
+                    BUSIFRIEND Company Limited
+                    <br>
+                    <b>Warehouse Devision</b>
+                  </h5>
+                  <p>Tel. +662-000-0000 | Prachauthit 52, Bangkok, 10140</p>
+                </div>
+              </div>
+              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+                <p class="paper-section-text">Document Header</p>
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 70px;">Ref NO:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 75px;">Doc NO:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 75px;">Date:</p>
+                <input class="paper-textbox-box" type="date">
+              </div>
+              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+                <p class="paper-section-text">Order Information</p>
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 75px;">Quantity:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 215px;">Movement Code:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 75px;">Location:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div style="grid-column: span 3;">
+                <table style="width: 100%;">
+                  <tr>
+                    <th>Customer NO</th>
+                    <th>Suppiler NO</th>
+                    <th>Employee NO</th>
+                    <th>Return NO</th>
+                  </tr>
+                  <tr>
+                    <td>1234</td>
+                    <td>5678</td>
+                    <td>9012</td>
+                    <td>3456</td>
+                  </tr>
+                  <tr>
+                    <td>1234</td>
+                    <td>5678</td>
+                    <td>9012</td>
+                    <td>3456</td>
+                  </tr>
+                  <tr>
+                    <td>1234</td>
+                    <td>5678</td>
+                    <td>9012</td>
+                    <td>3456</td>
+                  </tr>
+                  <tr>
+                    <td>1234</td>
+                    <td>5678</td>
+                    <td>9012</td>
+                    <td>3456</td>
+                  </tr>
+                  <tr>
+                    <td>1234</td>
+                    <td>5678</td>
+                    <td>9012</td>
+                    <td>3456</td>
+                  </tr>
+                </table>
+              </div>
+              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+                <p class="paper-section-text">Notes & Approval</p>
+              </div>
+              <div class="paper-textbox-div" style="grid-column: span 2;">
+                <p class="paper-textbox-label" style="width: 75px;">Notes:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width: 125px;">Apprived by:</p>
+                <input class="paper-textbox-box" type="text">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -347,5 +243,67 @@ table tbody tr td {
 table thead tr {
   border: 2px solid #d6d6d6;
   border-width: 3px 1px 0px 1px;
+}
+.viewing-div {
+  padding: 15px;
+  background-color: #cccccc;
+  padding-top: 20px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}
+.doc-paper {
+  background-color: white;
+  min-width: 800px;
+  max-width: 800px;
+  height: auto;
+  overflow: scroll;
+  box-shadow: /* The top layer shadow */ 0 -1px 1px rgba(0, 0, 0, 0.15),
+    /* The second layer */ 0 -10px 0 -5px #eee,
+    /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.15),
+    /* The third layer */ 0 -20px 0 -10px #eee,
+    /* The third layer shadow */ 0 -20px 1px -9px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+}
+.doc-paper-grid {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-rows: 100px 50px 60px 20px 60px auto 40px 60px;
+}
+.paper-section-text {
+  margin: 0;
+  width: 100%;
+  background-color: #e9ecef;
+  font-weight: bold;
+  text-indent: 10px;
+}
+.doc-paper-header {
+  grid-column: span 3;
+  border: solid grey;
+  border-width: 0 0 3px 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  align-items: center;
+}
+.paper-textbox-label {
+  color: rgb(39, 39, 39);
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+}
+.paper-textbox-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.paper-textbox-box {
+  text-align: center;
+  border: 1px solid grey;
+  border-width: 0 0 1px 0;
+  width: 100%;
 }
 </style>

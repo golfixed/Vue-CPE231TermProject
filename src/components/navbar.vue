@@ -3,7 +3,7 @@
     <div class="row" style="width:100%;">
       <div class="col-6">
         <h5 style="margin-bottom:0px;">
-          <b>Inventory Management I</b>
+          <b>Warehouse Management I</b>
         </h5>
       </div>
       <div class="col-6 d-flex flex-row justify-content-end" style="    padding: 0px;">

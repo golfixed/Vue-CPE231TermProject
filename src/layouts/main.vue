@@ -56,5 +56,6 @@ a:hover {
   border: 1px solid grey;
   border-radius: 5px;
   height: 30px;
+  text-indent: 10px;
 }
 </style>
