@@ -75,37 +75,37 @@
                   <p>Tel. +662-000-0000 | Prachauthit 52, Bangkok, 10140</p>
                 </div>
               </div>
-              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Document Header</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 70px;">Ref NO:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Ref NO:</p>
+                <p class="paper-text-show">1120</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 75px;">Doc NO:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Doc NO:</p>
+                <p class="paper-text-show">0023</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 75px;">Date:</p>
-                <input class="paper-textbox-box" type="date">
+                <p class="paper-textbox-label">Date:</p>
+                <p class="paper-text-show">03-10-2015</p>
               </div>
-              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Order Information</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 75px;">Quantity:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Quantity:</p>
+                <p class="paper-text-show">3000 Unit</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label" style="width: 215px;">Movement Code:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">7457</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 75px;">Location:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Location:</p>
+                <p class="paper-text-show">AB1234</p>
               </div>
-              <div style="grid-column: span 3;">
+              <div style="grid-column: span 2;">
                 <table style="width: 100%;">
                   <tr>
                     <th>Customer NO</th>
@@ -145,16 +145,16 @@
                   </tr>
                 </table>
               </div>
-              <div style="grid-column: span 3;display:flex;align-items:flex-end;">
+              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Notes & Approval</p>
               </div>
-              <div class="paper-textbox-div" style="grid-column: span 2;">
-                <p class="paper-textbox-label" style="width: 75px;">Notes:</p>
-                <input class="paper-textbox-box" type="text">
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label">Notes:</p>
+                <p class="paper-text-show">This is just a temporary document.</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 125px;">Apprived by:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Approved by:</p>
+                <p class="paper-text-show">T. Peerapong</p>
               </div>
             </div>
           </form>
@@ -209,56 +209,23 @@ export default {
   width: 100%;
   border-radius: 5px;
 }
-th {
-  text-align: center;
-  background-color: #ececec;
-}
-td,
-th {
-  border: 1px solid #d6d6d6;
-  border-width: 1px;
-}
-td {
-  text-indent: 10px;
-}
-tr {
-  height: 30px;
-}
-tr:hover {
-  background-color: #ececec;
-}
-table tbody,
-table thead {
-  display: block;
-  width: 100%;
-}
-table tbody {
-  overflow: auto;
-  height: calc(100vh - 410px);
-}
-table thead tr th,
-table tbody tr td {
-  width: 123px;
-}
-table thead tr {
-  border: 2px solid #d6d6d6;
-  border-width: 3px 1px 0px 1px;
-}
+
 .viewing-div {
   padding: 15px;
   background-color: #cccccc;
   padding-top: 20px;
-  padding-bottom: 0;
   display: flex;
   justify-content: center;
   overflow: scroll;
 }
 .doc-paper {
   background-color: white;
-  min-width: 800px;
+  min-width: 400px;
+  width: 800px;
   max-width: 800px;
-  height: auto;
-  overflow: scroll;
+  min-height: 500px;
+  height: 700px;
+  max-height: 1200px;
   box-shadow: /* The top layer shadow */ 0 -1px 1px rgba(0, 0, 0, 0.15),
     /* The second layer */ 0 -10px 0 -5px #eee,
     /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.15),
@@ -268,8 +235,8 @@ table thead tr {
 }
 .doc-paper-grid {
   display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
-  grid-template-rows: 100px 50px 60px 20px 60px auto 40px 60px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100px 50px 60px 60px 20px 60px 60px auto 40px 60px;
 }
 .paper-section-text {
   margin: 0;
@@ -279,7 +246,7 @@ table thead tr {
   text-indent: 10px;
 }
 .doc-paper-header {
-  grid-column: span 3;
+  grid-column: span 2;
   border: solid grey;
   border-width: 0 0 3px 0;
   display: flex;
@@ -287,23 +254,11 @@ table thead tr {
   text-align: right;
   align-items: center;
 }
-.paper-textbox-label {
-  color: rgb(39, 39, 39);
-  padding: 0;
-  margin: 0;
-  margin-right: 10px;
-}
 .paper-textbox-div {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
   padding: 0 10px;
-}
-.paper-textbox-box {
-  text-align: center;
-  border: 1px solid grey;
-  border-width: 0 0 1px 0;
-  width: 100%;
 }
 </style>

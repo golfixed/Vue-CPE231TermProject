@@ -15,7 +15,8 @@
       <pagesection style="margin-top: 20px;" icon="fas fa-cubes" sectext="Menu"/>
       <div class="menu-item-box">
         <mitem linkto="/document" icon="fas fa-file-alt" label="Document"/>
-        <mitem linkto="/assignment" icon="fas fa-edit" label="Assignment"/>
+        <mitem linkto="/assignment/staff" icon="fas fa-edit" label="Assignment"/>
+        <mitem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment"/>
         <mitem linkto="/customer" icon="fas fa-users" label="Customer"/>
         <mitem linkto="/supplier" icon="fas fa-truck-loading" label="Supplier"/>
         <mitem linkto="/stocking" icon="fas fa-chart-pie" label="Stocking"/>
@@ -59,12 +60,12 @@ export default {
 </script>
 
 <style scoped>
-
 .page-display {
   padding: 15px;
   margin: 0;
   display: inline-block;
   width: 100%;
+  overflow: scroll;
 }
 .dashboard {
   display: grid;

@@ -5,6 +5,7 @@ const Home = () => import('@/views/home')
 import Dashboard from '@/views/dashboard'
 import Document from '@/views/document'
 import Assignment from '@/views/assignment'
+import Assignment2 from '@/views/assignment2'
 import Customer from '@/views/customer'
 import Supplier from '@/views/supplier'
 import Stocking from '@/views/stocking'
@@ -39,9 +40,17 @@ const router = new Router({
       component: Document
     },
     {
-      path: '/assignment',
-      name: 'Assignment',
+      path: '/assignment/staff',
+      name: 'Staff Assignment',
       component: Assignment,
+      meta: {
+        roles: ['admin']
+      }
+    },
+    {
+      path: '/assignment/manager',
+      name: 'Manager Assignment',
+      component: Assignment2,
       meta: {
         roles: ['admin']
       }

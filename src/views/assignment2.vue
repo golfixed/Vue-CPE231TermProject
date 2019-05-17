@@ -1,7 +1,7 @@
 <template>
   <div class="home-layout">
     <div>
-      <toolbar pagename="Staff Assignment"/>
+      <toolbar pagename="Manager Assignment"/>
     </div>
     <div class="page-display">
     </div>

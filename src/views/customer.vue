@@ -63,49 +63,45 @@
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Customer NO:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">1234</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Name:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">Nitiwadee Wangwiboonkij</p>
               </div>
               <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Contact Information</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Phone:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">0989101038</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Email:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">nithiwadee.mind@mail.kmutt.ac.th</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Address:</p>
-                <textarea style="width:100%;height:70px;"></textarea>
+                <p class="paper-textarea-show">55/107 m6 Sakmakkee20 Sukhumvit 73, <br/>Sattahip Chonburi THL 20180</p>
               </div>
               <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">History</p>
               </div>
               <div style="padding: 15px 10px;">
                 <table style="width: 100%;">
-                  <thead>
                     <tr>
                       <th style="width: 123px;">Item NO</th>
                       <th style="width: 500px;">Item Name</th>
                       <th style="width: 156px;">Quantity</th>
                     </tr>
-                  </thead>
-                  <tbody style="height:calc(100vh - 696px);">
                     <tr>
                       <td style="width: 123px;">1234</td>
                       <td style="width: 500px;">Dark Oak Wood (RAW A1)</td>
                       <td style="width: 156px;">12</td>
                     </tr>
-                  </tbody>
                   <tr>
-                    <td style="width:360px;">
-                      <p style="padding:0;margin:0;">Showing: 12 items from all 640</p>
+                    <td  colspan="3" style="width:360px;">
+                      <p style="padding:0;margin:0;">Showing: 1 items from all 1</p>
                     </td>
                   </tr>
                 </table>
@@ -205,18 +201,17 @@ table tbody tr > td:first-child {
   width: 123px;
 }
 .viewing-div {
-  background-color: #cccccc;
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: scroll;
-  padding: 15px;
 }
 .doc-paper {
   background-color: white;
   height: 100%;
-  min-width: 800px;
-  max-width: 800px;
-  overflow: hidden;
+  min-width: 400px;
+  width: 100%;
+  height: auto;
   padding: 15px;
 }
 .doc-paper-grid {
@@ -243,10 +238,5 @@ table tbody tr > td:first-child {
   align-items: center;
   padding: 0 10px;
 }
-.paper-textbox-box {
-  width: 100%;
-  text-indent: 10px;
-  border: solid grey;
-  border-width: 1px;
-}
+
 </style>

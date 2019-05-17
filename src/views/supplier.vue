@@ -18,7 +18,12 @@
                 <input class="textbox" type="text" name="search_name">
               </div>
               <div style="display: flex; justify-content:flex-end;">
-                <btn btntype="reset" style="margin-right: 10px;" text="Show All" color="btn-refresh"/>
+                <btn
+                  btntype="reset"
+                  style="margin-right: 10px;"
+                  text="Show All"
+                  color="btn-refresh"
+                />
                 <btn btntype="submit" text="Search" color="btn-refresh"/>
               </div>
             </form>
@@ -59,52 +64,68 @@
           <form>
             <div class="doc-paper-grid">
               <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Customer Information</p>
+                <p class="paper-section-text">Supplier Information</p>
+              </div>
+              <div style="display:flex;align-items:flex-end;margin-left:10px;">
+                <p class="paper-section-text">Supplier Logo</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Customer NO:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-textbox-label">Supplier NO:</p>
+                <p class="paper-text-show">1234</p>
+              </div>
+              <div
+                class="paper-textbox-div"
+                style="display:block;grid-row: span 8;background-color: #f3f3f3;margin-left: 10px;"
+              >
+                <div class="suplier-logo">
+                  <img src="/static/img/comp_mock.jpg" style="width:200px;">
+                </div>
+                <form style="display:flex;justify-content:flex-end;margin-top: 10px;">
+                  <btn
+                    btntype="submit"
+                    text="Edit"
+                    color="btn-refresh"
+                    style="margin-right: 10px;"
+                  />
+                  <btn btntype="submit" text="Remove" color="btn-refresh"/>
+                </form>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Name:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">Donuts Bangkok Co.,Ltd.</p>
               </div>
               <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Contact Information</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Phone:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">024700000</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Email:</p>
-                <input class="paper-textbox-box" type="text">
+                <p class="paper-text-show">whoarehere@donuts-bkk.com</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Address:</p>
-                <textarea style="width:100%;height:70px;"></textarea>
+                <p class="paper-textarea-show">126 Chaiyo Building, ASMT intersection<br/>Rama9, Bangkok 10140</p>
               </div>
               <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">History</p>
               </div>
               <div style="padding: 15px 10px;">
                 <table style="width: 100%;">
-                  <thead>
                     <tr>
                       <th style="width: 123px;">Item NO</th>
                       <th style="width: 500px;">Item Name</th>
                       <th style="width: 156px;">Quantity</th>
                     </tr>
-                  </thead>
-                  <tbody style="height:calc(100vh - 696px);">
                     <tr>
-                      <td style="width: 123px;">1234</td>
-                      <td style="width: 500px;">Dark Oak Wood (RAW A1)</td>
-                      <td style="width: 156px;">12</td>
+                      <td style="width: 123px;">1212</td>
+                      <td style="width: 500px;">Raw Polycarbonate Grade B+</td>
+                      <td style="width: 156px;">200</td>
                     </tr>
-                  </tbody>
                   <tr>
-                    <td style="width:360px;">
+                    <td colspan="3" style="width:360px;">
                       <p style="padding:0;margin:0;">Showing: 12 items from all 640</p>
                     </td>
                   </tr>
@@ -205,22 +226,21 @@ table tbody tr > td:first-child {
   width: 123px;
 }
 .viewing-div {
-  background-color: #cccccc;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   overflow: scroll;
-  padding: 15px;
 }
 .doc-paper {
   background-color: white;
   height: 100%;
-  min-width: 800px;
-  max-width: 800px;
-  overflow: hidden;
+  min-width: 400px;
+  width: 100%;
   padding: 15px;
 }
 .doc-paper-grid {
   display: grid;
+  grid-template-columns: 70% 30%;
   grid-template-rows: 20px 50px 50px 50px 50px 50px 80px 50px auto;
 }
 .paper-section-text {
@@ -243,10 +263,13 @@ table tbody tr > td:first-child {
   align-items: center;
   padding: 0 10px;
 }
-.paper-textbox-box {
+.suplier-logo {
+  border: 1px solid grey;
+  background-color: white;
   width: 100%;
-  text-indent: 10px;
-  border: solid grey;
-  border-width: 1px;
+  height: 200px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -9,7 +9,8 @@
       <ul>
         <sidebaritem linkto="/" icon="fas fa-home" label="Home"/>
         <sidebaritem linkto="/document" icon="fas fa-file-alt" label="Document"/>
-        <sidebaritem linkto="/assignment" icon="fas fa-edit" label="Assignment"/>
+        <sidebaritem linkto="/assignment/staff" icon="fas fa-edit" label="Assignment"/>
+        <sidebaritem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment"/>
         <sidebaritem linkto="/customer" icon="fas fa-users" label="Customer"/>
         <sidebaritem linkto="/supplier" icon="fas fa-truck-loading" label="Supplier"/>
         <sidebaritem linkto="/stocking" icon="fas fa-chart-pie" label="Stocking"/>
@@ -47,7 +48,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.sidebar-logo{
+.sidebar-logo {
   max-height: 200px;
 }
 </style>
