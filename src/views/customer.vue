@@ -10,16 +10,12 @@
           <div>
             <form>
               <div style="display: flex; margin: 10px 0;">
-                <p class="box-text">Customer NO</p>
-                <input class="textbox" type="text" name="search_customer_no">
+                <p class="box-text">Customer Name</p>
+                <input class="textbox" type="text" v-model="CustomerName">
               </div>
-              <div style="display: flex; margin: 10px 0;">
-                <p class="box-text">Name</p>
-                <input class="textbox" type="text" name="search_name">
-              </div>
-              <div style="display: flex; justify-content:flex-end;">
-                <btn btntype="reset" style="margin-right: 10px;" text="Show All" color="btn-refresh"/>
-                <btn btntype="submit" text="Search" color="btn-refresh"/>
+              <div style="display:flex;justify-content:flex-end;">
+                <button class="btn-refresh" @click="fetchList()">Show All</button>
+                <button class="btn-refresh" @click="search()" style="margin-left:10px;">Search</button>
               </div>
             </form>
           </div>
@@ -33,22 +29,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>00000</td>
-                <td>Double A Fast Print Co.,Ltd.</td>
-              </tr>
-              <tr>
-                <td>00023</td>
-                <td>KMUTT Library</td>
-              </tr>
-              <tr>
-                <td>00230</td>
-                <td>Apple Inc. (Thailand)</td>
+              <tr v-for="(data, i) in list" :key="i" @click="showResult(data['CustomerNo']);noselectf();">
+                <td>{{data['CustomerNo']}}</td>
+                <td>{{data['CustomerName']}}</td>
               </tr>
             </tbody>
             <tr>
               <td style="width:360px;">
-                <p style="padding:0;margin:0;">Showing: 3 items from all 40</p>
+                <p style="padding:0;margin:0;">Showing: 0 items from all 40</p>
               </td>
             </tr>
           </table>
@@ -56,58 +44,38 @@
       </div>
       <div class="viewing-div">
         <div class="doc-paper">
-          <form>
-            <div class="doc-paper-grid">
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Customer Information</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Customer NO:</p>
-                <p class="paper-text-show">1234</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Name:</p>
-                <p class="paper-text-show">Nitiwadee Wangwiboonkij</p>
-              </div>
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Contact Information</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Phone:</p>
-                <p class="paper-text-show">0989101038</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Email:</p>
-                <p class="paper-text-show">nithiwadee.mind@mail.kmutt.ac.th</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Address:</p>
-                <p class="paper-textarea-show">55/107 m6 Sakmakkee20 Sukhumvit 73, <br/>Sattahip Chonburi THL 20180</p>
-              </div>
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">History</p>
-              </div>
-              <div style="padding: 15px 10px;">
-                <table style="width: 100%;">
-                    <tr>
-                      <th style="width: 123px;">Item NO</th>
-                      <th style="width: 500px;">Item Name</th>
-                      <th style="width: 156px;">Quantity</th>
-                    </tr>
-                    <tr>
-                      <td style="width: 123px;">1234</td>
-                      <td style="width: 500px;">Dark Oak Wood (RAW A1)</td>
-                      <td style="width: 156px;">12</td>
-                    </tr>
-                  <tr>
-                    <td  colspan="3" style="width:360px;">
-                      <p style="padding:0;margin:0;">Showing: 1 items from all 1</p>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+          <div
+            style="display:flex;justify-content:center;align-items:center;height:calc(100vh - 200px);font-size:20px;color: grey;"
+            v-if="noselect === true"
+          >No selected Customer</div>
+          <div class="doc-paper-grid" v-if="noselect === false">
+            <div style="display:flex;align-items:flex-end;">
+              <p class="paper-section-text">Customer Information</p>
             </div>
-          </form>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Customer NO:</p>
+              <p class="paper-text-show">{{result['CustomerNo']}}</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Name:</p>
+              <p class="paper-text-show">{{result['CustomerName']}}</p>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+              <p class="paper-section-text">Contact Information</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Phone:</p>
+              <p class="paper-text-show">{{result['CustomerPhone']}}</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Email:</p>
+              <p class="paper-text-show">{{result['CustomerEmail']}}</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Address:</p>
+              <p class="paper-textarea-show">{{result['CustomerAddress']}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,14 +86,46 @@
 import layout_main from "@/layouts/main.vue";
 import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
+import axios from "axios";
 export default {
   name: "customer",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.fetchList();
   },
   components: {
     toolbar,
     btn
+  },
+  data() {
+    return {
+      list: [],
+      result: [],
+      CustomerName: "",
+      noselect: true
+    };
+  },
+  methods: {
+    fetchList: function() {
+      axios.get("http://localhost/customer_list.php").then(res => {
+        this.list = res.data;
+      });
+    },
+    showResult: function(id) {
+      axios.get("http://localhost/customer_show.php?id=" + id).then(res => {
+        this.result = res.data[0];
+      });
+    },
+    search: function() {
+      axios
+        .get("http://localhost/customer_search.php?id=" + this.CustomerName)
+        .then(res => {
+          this.list = res.data;
+        });
+    },
+    noselectf: function() {
+      this.noselect = false;
+    }
   }
 };
 </script>
@@ -142,7 +142,7 @@ export default {
 }
 .searchbar-display {
   display: grid;
-  grid-template-rows: 180px auto;
+  grid-template-rows: 132px auto;
 }
 .searchbox,
 .listbox {
@@ -184,7 +184,7 @@ table thead {
 }
 table tbody {
   overflow: auto;
-  height: calc(100vh - 410px);
+  height: calc(100vh - 362px);
 }
 /* table thead tr th,
 table tbody tr td {
@@ -238,5 +238,4 @@ table tbody tr > td:first-child {
   align-items: center;
   padding: 0 10px;
 }
-
 </style>

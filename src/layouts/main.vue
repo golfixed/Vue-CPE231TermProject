@@ -144,4 +144,36 @@ table thead tr {
   border: 0px solid #d6d6d6;
   border-width: 3px 0 0 0;
 }
+.paper-section-text {
+  margin: 0;
+  width: 100%;
+  background-color: #e9ecef;
+  font-weight: bold;
+  text-indent: 10px;
+}
+.searchbar {
+  border: 1px solid #d6d6d6;
+  border-width: 0px 1px 0px 0px;
+}
+.searchbar-display {
+  display: grid;
+  grid-template-rows: 180px auto;
+}
+.searchbox,
+.listbox {
+  padding: 15px;
+}
+.box-text {
+  width: 120px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+}
+.btn-refresh {
+    background-color: #f1f1f1;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
 </style>

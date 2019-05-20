@@ -25,6 +25,7 @@
       <toolbaritem icon="fa fa-sign-out-alt" label="log out"/>
     </div>
     <div v-if="pagename === 'Manager Assignment'" class="toolbar-div-right">
+      <toolbaritem icon="fas fa-plus" label="add new"/>
       <toolbaritem icon="fa fa-sync" label="refresh"/>
       <toolbaritem icon="fa fa-sign-out-alt" label="log out"/>
     </div>
@@ -48,7 +49,7 @@ export default {
   components: {
     toolbaritem
   },
-  props: ["pagename"]
+  props: ["pagename",'event']
 };
 </script>
 

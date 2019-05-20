@@ -10,21 +10,12 @@
           <div>
             <form>
               <div style="display: flex; margin: 10px 0;">
-                <p class="box-text">Supplier NO</p>
-                <input class="textbox" type="text" name="search_supplier_no">
-              </div>
-              <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Name</p>
-                <input class="textbox" type="text" name="search_name">
+                <input class="textbox" type="text" name="search_name" v-model="SupplierName">
               </div>
               <div style="display: flex; justify-content:flex-end;">
-                <btn
-                  btntype="reset"
-                  style="margin-right: 10px;"
-                  text="Show All"
-                  color="btn-refresh"
-                />
-                <btn btntype="submit" text="Search" color="btn-refresh"/>
+                <button class="btn-refresh" @click="fetchList()">Show All</button>
+                <button class="btn-refresh" @click="search()" style="margin-left:10px;">Search</button>
               </div>
             </form>
           </div>
@@ -38,17 +29,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>12334</td>
-                <td>West King Wood Co.,Ltd.</td>
-              </tr>
-              <tr>
-                <td>45434</td>
-                <td>Aka Iron and Material</td>
-              </tr>
-              <tr>
-                <td>12123</td>
-                <td>Arakane PU and Polycarbon</td>
+              <tr v-for="(data, i) in list" :key="i" @click="showResult(data['SupplierNo']);noselectf();">
+                <td>{{data['SupplierNo']}}</td>
+                <td>{{data['SupplierName']}}</td>
               </tr>
             </tbody>
             <tr>
@@ -61,78 +44,49 @@
       </div>
       <div class="viewing-div">
         <div class="doc-paper">
-          <form>
-            <div class="doc-paper-grid">
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Supplier Information</p>
-              </div>
-              <div style="display:flex;align-items:flex-end;margin-left:10px;">
-                <p class="paper-section-text">Supplier Logo</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Supplier NO:</p>
-                <p class="paper-text-show">1234</p>
-              </div>
-              <div
-                class="paper-textbox-div"
-                style="display:block;grid-row: span 8;background-color: #f3f3f3;margin-left: 10px;"
-              >
-                <div class="suplier-logo">
-                  <img src="/static/img/comp_mock.jpg" style="width:200px;">
-                </div>
-                <form style="display:flex;justify-content:flex-end;margin-top: 10px;">
-                  <btn
-                    btntype="submit"
-                    text="Edit"
-                    color="btn-refresh"
-                    style="margin-right: 10px;"
-                  />
-                  <btn btntype="submit" text="Remove" color="btn-refresh"/>
-                </form>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Name:</p>
-                <p class="paper-text-show">Donuts Bangkok Co.,Ltd.</p>
-              </div>
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Contact Information</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Phone:</p>
-                <p class="paper-text-show">024700000</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Email:</p>
-                <p class="paper-text-show">whoarehere@donuts-bkk.com</p>
-              </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Address:</p>
-                <p class="paper-textarea-show">126 Chaiyo Building, ASMT intersection<br/>Rama9, Bangkok 10140</p>
-              </div>
-              <div style="display:flex;align-items:flex-end;">
-                <p class="paper-section-text">History</p>
-              </div>
-              <div style="padding: 15px 10px;">
-                <table style="width: 100%;">
-                    <tr>
-                      <th style="width: 123px;">Item NO</th>
-                      <th style="width: 500px;">Item Name</th>
-                      <th style="width: 156px;">Quantity</th>
-                    </tr>
-                    <tr>
-                      <td style="width: 123px;">1212</td>
-                      <td style="width: 500px;">Raw Polycarbonate Grade B+</td>
-                      <td style="width: 156px;">200</td>
-                    </tr>
-                  <tr>
-                    <td colspan="3" style="width:360px;">
-                      <p style="padding:0;margin:0;">Showing: 12 items from all 640</p>
-                    </td>
-                  </tr>
-                </table>
+          <div
+            style="display:flex;justify-content:center;align-items:center;height:calc(100vh - 200px);font-size:20px;color: grey;"
+            v-if="noselect === true"
+          >No selected Supplier</div>
+          <div class="doc-paper-grid" v-if="noselect === false">
+            <div style="display:flex;align-items:flex-end;">
+              <p class="paper-section-text">Supplier Information</p>
+            </div>
+            <div style="display:flex;align-items:flex-end;margin-left:10px;">
+              <p class="paper-section-text">Supplier Logo</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Supplier NO:</p>
+              <p class="paper-text-show">{{result['SupplierNo']}}</p>
+            </div>
+            <div
+              class="paper-textbox-div"
+              style="display:block;grid-row: span 8;background-color: #f3f3f3;margin-left: 10px;"
+            >
+              <div class="suplier-logo">
+                <img :src="result['SupplierLogo']" style="width:200px;height:200px;">
               </div>
             </div>
-          </form>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Name:</p>
+              <p class="paper-text-show">{{result['SupplierName']}}</p>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+              <p class="paper-section-text">Contact Information</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Phone:</p>
+              <p class="paper-text-show">{{result['SupplierPhone']}}</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Email:</p>
+              <p class="paper-text-show">{{result['SupplierEmail']}}</p>
+            </div>
+            <div class="paper-textbox-div">
+              <p class="paper-textbox-label">Address:</p>
+              <p class="paper-textarea-show">{{result['SupplierAddress']}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -143,14 +97,52 @@
 import layout_main from "@/layouts/main.vue";
 import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
+import axios from "axios";
 export default {
   name: "suppiler",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.fetchList();
   },
   components: {
     toolbar,
     btn
+  },
+  data() {
+    return {
+      list: [],
+      result: [],
+      SupplierName: "",
+      noselect: true
+    };
+  },
+  methods: {
+    fetchList: function() {
+      axios.get("http://localhost/supplier_list.php").then(res => {
+        console.log(res);
+        this.list = res.data;
+        // this.count = res.data2
+      });
+    },
+    showResult: function(id) {
+      axios.get("http://localhost/supplier_show.php?id=" + id).then(res => {
+        this.result = res.data[0];
+        console.log(res);
+      });
+    },
+    search: function() {
+      console.log(this.SupplierName);
+      console.log("search");
+      axios
+        .get("http://localhost/supplier_search.php?id=" + this.SupplierName)
+        .then(res => {
+          console.log("res");
+          this.list = res.data;
+        });
+    },
+    noselectf: function() {
+      this.noselect = false;
+    }
   }
 };
 </script>
@@ -167,7 +159,7 @@ export default {
 }
 .searchbar-display {
   display: grid;
-  grid-template-rows: 180px auto;
+  grid-template-rows: 132px auto;
 }
 .searchbox,
 .listbox {
@@ -209,7 +201,7 @@ table thead {
 }
 table tbody {
   overflow: auto;
-  height: calc(100vh - 410px);
+  height: calc(100vh - 362px);
 }
 /* table thead tr th,
 table tbody tr td {
@@ -267,7 +259,7 @@ table tbody tr > td:first-child {
   border: 1px solid grey;
   background-color: white;
   width: 100%;
-  height: 200px;
+  height: 210px;
   margin-top: 10px;
   display: flex;
   justify-content: center;

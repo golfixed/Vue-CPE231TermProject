@@ -10,16 +10,16 @@
           <div>
             <form>
               <div style="display: flex; margin: 10px 0;">
-                <p class="box-text">Ref NO</p>
-                <input class="textbox" type="text">
+                <p class="box-text">Doc NO</p>
+                <input class="textbox" type="number" v-model="DocNO" min="1">
               </div>
               <div style="display: flex; margin: 10px 0;">
-                <p class="box-text">Document Date</p>
+                <p class="box-text">Document Type</p>
                 <input class="textbox" type="date">
               </div>
               <div style="display: flex; justify-content:flex-end;">
-                <btn style="margin-right: 10px;" text="Show All" color="btn-refresh"/>
-                <btn text="Search" color="btn-refresh"/>
+                <button class="btn-refresh" @click="fetchList()" >Clear</button>
+                <button class="btn-refresh" @click="search()" >New Search</button>
               </div>
             </form>
           </div>
@@ -34,20 +34,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
-              </tr>
-              <tr>
-                <td>2324</td>
-                <td>ER3D</td>
-                <td>03/10/1998</td>
-              </tr>
-              <tr>
-                <td>1234</td>
-                <td>ABCD</td>
-                <td>13/10/2019</td>
+              <tr v-for="(data, i) in list" :key="i" @click="click(data.id)">
+                <td>{{ data.id }}</td>
               </tr>
             </tbody>
             <tr>
@@ -59,7 +47,8 @@
         </div>
       </div>
       <div class="viewing-div">
-        <div class="doc-paper">
+        <div style="display:flex;align-items:center;height:100%;" v-if="!document">No document is selected.</div>
+        <div class="doc-paper" v-if="document">
           <form>
             <div class="doc-paper-grid">
               <div class="doc-paper-header">
@@ -84,7 +73,7 @@
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Doc NO:</p>
-                <p class="paper-text-show">0023</p>
+                <p class="paper-text-show">{{ document.DocNo }}</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Date:</p>
@@ -104,46 +93,6 @@
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Location:</p>
                 <p class="paper-text-show">AB1234</p>
-              </div>
-              <div style="grid-column: span 2;">
-                <table style="width: 100%;">
-                  <tr>
-                    <th>Customer NO</th>
-                    <th>Suppiler NO</th>
-                    <th>Employee NO</th>
-                    <th>Return NO</th>
-                  </tr>
-                  <tr>
-                    <td>1234</td>
-                    <td>5678</td>
-                    <td>9012</td>
-                    <td>3456</td>
-                  </tr>
-                  <tr>
-                    <td>1234</td>
-                    <td>5678</td>
-                    <td>9012</td>
-                    <td>3456</td>
-                  </tr>
-                  <tr>
-                    <td>1234</td>
-                    <td>5678</td>
-                    <td>9012</td>
-                    <td>3456</td>
-                  </tr>
-                  <tr>
-                    <td>1234</td>
-                    <td>5678</td>
-                    <td>9012</td>
-                    <td>3456</td>
-                  </tr>
-                  <tr>
-                    <td>1234</td>
-                    <td>5678</td>
-                    <td>9012</td>
-                    <td>3456</td>
-                  </tr>
-                </table>
               </div>
               <div style="grid-column: span 2;display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Notes & Approval</p>
@@ -168,14 +117,65 @@
 import toolbar from "@/components/toolbar.vue";
 import layout_main from "@/layouts/main.vue";
 import btn from "@/components/btn/btn-main.vue";
+import axios from "axios";
+
 export default {
   name: "document",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.click(500);
+    this.fetchList();
+  },
+  data() {
+    return {
+      list: [],
+      document: {},
+      RefNO: ""
+    }
   },
   components: {
     toolbar,
     btn
+  },
+  methods: {
+    fetchList: function () {
+      // 
+      axios.get('http://localhost/document_list.php')
+        .then(res => {
+          console.log(res)
+          // Mockup
+          this.list = [
+            {
+              id: 1
+            },
+            {
+              id: 2
+            }
+          ]
+            // Real use
+            // this.list = res.data
+        })
+    },
+    click: function(id){
+      axios.get('http://localhost/document_list.php?id='+id)
+        .then(res => {
+          this.document = res.data[0]
+          console.log(this.document)
+        })
+    },
+    search: function(){
+      console.log('search')
+      axios.get('http://localhost/document_list.php?RefNO=' + this.RefNO)
+        .then(res => {
+          console.log('res')
+          //  Mock up
+          this.list = [
+            { id: 10 }
+          ]
+          // Real use
+          // this.list = res.data
+        })
+    }
   }
 };
 </script>
@@ -185,25 +185,6 @@ export default {
   display: grid;
   grid-template-columns: 400px calc(100vw - 600px);
   height: calc(100vh - 150px);
-}
-.searchbar {
-  border: 1px solid #d6d6d6;
-  border-width: 0px 1px 0px 0px;
-}
-.searchbar-display {
-  display: grid;
-  grid-template-rows: 180px auto;
-}
-.searchbox,
-.listbox {
-  padding: 15px;
-}
-.box-text {
-  width: 120px;
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  align-items: center;
 }
 .doc-list-table {
   width: 100%;
@@ -238,13 +219,7 @@ export default {
   grid-template-columns: 50% 50%;
   grid-template-rows: 100px 50px 60px 60px 20px 60px 60px auto 40px 60px;
 }
-.paper-section-text {
-  margin: 0;
-  width: 100%;
-  background-color: #e9ecef;
-  font-weight: bold;
-  text-indent: 10px;
-}
+
 .doc-paper-header {
   grid-column: span 2;
   border: solid grey;
@@ -260,5 +235,11 @@ export default {
   align-items: center;
   margin-bottom: 10px;
   padding: 0 10px;
+}
+.btn-refresh {
+    background-color: #f1f1f1;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 </style>
