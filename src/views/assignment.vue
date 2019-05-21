@@ -19,7 +19,7 @@
                 >-->
                 <select
                   v-model="Employee"
-                  @change="search();callname();"
+                  @change="search();"
                   style="width:200px;height:32px;"
                 >
                   <option v-for="(data,i) in staff_list" :key="i" :value="data['employeeno']">{{data['employeeno']}}  {{data['employeename']}}</option>
@@ -84,6 +84,7 @@ export default {
   created() {
     this.$emit(`update:layout`, layout_main);
     this.stafflist();
+    this.callname();
   },
   data() {
     return {

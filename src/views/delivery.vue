@@ -28,33 +28,33 @@
                       >
                     </div>
                     <div style="display:flex; justify-content:flex-end;">
-                      <button class="btn-refresh" @click="select()" style="margin-left:10px;">Search</button>
+                      <button class="btn-refresh" @click="show();" style="margin-left:10px;">Select</button>
                     </div>
                   </div>
 
                   <div style="display:flex;align-items:flex-end;">
                     <p class="paper-section-text">Detail</p>
                   </div>
-                  <div style="overflow:scroll;padding:15px;">
+                  <div style="padding:15px;">
                     <div class="paper-textbox-div">
                       <p class="paper-textbox-label">Movement No:</p>
-                      <p class="paper-text-show card-label">{{selectdata['movementno']}}</p>
+                      <p class="paper-text-show card-label">{{data['movementno']}}</p>
                     </div>
                     <div class="paper-textbox-div">
                       <p class="paper-textbox-label">Doc no:</p>
-                      <p class="paper-text-show card-label">{{selectdata['docno']}}</p>
+                      <p class="paper-text-show card-label">{{data['docno']}}</p>
                     </div>
                     <div class="paper-textbox-div">
                       <p class="paper-textbox-label">Item Name:</p>
-                      <p class="paper-text-show card-label">{{selectdata['itemname']}}</p>
+                      <p class="paper-text-show card-label">{{data['itemname']}}</p>
                     </div>
                     <div class="paper-textbox-div">
                       <p class="paper-textbox-label">Quantity:</p>
-                      <p class="paper-text-show card-label">{{selectdata['moveqty']}}</p>
+                      <p class="paper-text-show card-label">{{data['moveqty']}}</p>
                     </div>
                     <div class="paper-textbox-div">
-                      <p class="paper-textbox-label">Cuostomer:</p>
-                      <p class="paper-text-show card-label">{{selectdata['customername']}}</p>
+                      <p class="paper-textbox-label">Customer:</p>
+                      <p class="paper-text-show card-label">{{data['customername']}}</p>
                     </div>
                   </div>
                 </div>
@@ -65,32 +65,25 @@
       </div>
       <div class="phycount-display">
         <div class="section-side-text">
-          <h5 style="margin:0px;padding-right:20px;">Count</h5>
+          <h5 style="margin:0px;padding-right:20px;">Delivery</h5>
+        </div>
+        <div style="display:flex;align-items:center;">
+          <p class="paper-section-text">Assign To</p>
         </div>
         <div class="count-box">
-          <div style="display:flex;align-items:center;">
-            <p class="paper-section-text">Input Count</p>
-          </div>
           <div style="padding:10px 15px;border: 1px solid #e8ecef;">
             <div style="display: flex; margin: 10px 0;">
-              <p class="box-text">Quantity</p>
-              <input style="width: 219px;" class="textbox" type="text" v-model="qty">
+              <p class="box-text">Employee</p>
+                <select
+                  v-model="employee"
+                  style="width:200px;height:32px;"
+                >
+                  <option v-for="(dataman,i) in deliveryman" :key="i" :value="dataman['employeeno']">{{dataman['employeeno']}}  {{dataman['employeename']}}</option>
+                </select>
+                  <div style="display:flex; justify-content:flex-end;">
+                      <button class="btn-refresh" @click="save()" style="margin-left:10px;">Assign</button>
+                  </div>
             </div>
-          </div>
-          <div style="display:flex;align-items:center;">
-            <p class="paper-section-text">Count By</p>
-          </div>
-          <div style="padding:10px 15px;border: 1px solid #e8ecef;">
-            <div style="display: flex; margin: 10px 0;">
-              <p class="box-text">Employee NO</p>
-              <input style="width: 219px;" class="textbox" type="text" v-model="employee">
-            </div>
-          </div>
-          <div style="display: flex; justify-content:flex-end;margin: 15px 0px;">
-            <button class="btn-refresh" @click="send()" style="margin-left:10px;">Save</button>
-          </div>
-          <div>
-            {{save}}
           </div>
         </div>
       </div>
@@ -107,6 +100,7 @@ export default {
   name: "PhysicalCount",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.select();
   },
   components: {
     toolbar,
@@ -114,32 +108,35 @@ export default {
   },
   data() {
     return {
-      selectdata: [],
+      data: [],
+      list: [],
+      deliveryman: [],
       movementno: "",
+      employee:""
     };
   },
   methods: {
-    select: function() {
+    show: function() {
       axios
         .get("http://localhost/delivery_show.php?movementno=" + this.movementno)
         .then(res => {
-          this.selectdata = res.data[0];
-          console.log(this.selectdata);
+          this.data = res.data[0];
+          console.log(res);
         });
     },
-    send: function() {
-      axios.get("http://localhost/phycount_save.php?qty=" + this.qty +
-          "&employee=" +
-          this.employee +
-          "&itemno=" +
-          this.ItemNo +
-          "&location=" +
-          this.Location
-      ).then(res => {
-        this.save = res.save;
-        console.log(res.save);
-      }
-      );
+    save: function() {
+      axios
+        .get("http://localhost/delivery_save.php?employee=" + this.employee +"&movement=" + this.movementno)
+        .then(res => {
+          this.list = res.data;
+        });
+    },
+     select: function() {
+      axios
+        .get("http://localhost/delivery_select.php")
+        .then(res => {
+          this.deliveryman = res.data;
+        })
     }
   }
 };
