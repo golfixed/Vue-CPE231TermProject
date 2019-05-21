@@ -81,7 +81,7 @@
                   <option v-for="(dataman,i) in deliveryman" :key="i" :value="dataman['employeeno']">{{dataman['employeeno']}}  {{dataman['employeename']}}</option>
                 </select>
                   <div style="display:flex; justify-content:flex-end;">
-                      <button class="btn-refresh" @click="save()" style="margin-left:10px;">Assign</button>
+                      <button class="btn-refresh" @click="save();" onClick="window.location.reload();" style="margin-left:10px;">Assign</button>
                   </div>
             </div>
           </div>
