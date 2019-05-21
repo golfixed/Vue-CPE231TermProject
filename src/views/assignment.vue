@@ -22,11 +22,11 @@
                   @change="search();callname();"
                   style="width:200px;height:32px;"
                 >
-                  <option value="1">000001 Parattha W.</option>
-                  <option value="2">000002 Nithiwadee W.</option>
+                  <option v-for="(data,i) in staff_list" :key="i" :value="data['employeeno']">{{data['employeeno']}}  {{data['employeename']}}</option>
+                  <!-- <option value="2">000002 Nithiwadee W.</option>
                   <option value="3">000003 Bhaksiree T.</option>
                   <option value="4">000004 Peerapong T.</option>
-                  <option value="5">000005 Patipan P.</option>
+                  <option value="5">000005 Patipan P.</option> -->
                 </select>
               </div>
               <!-- <div style="display: flex; justify-content:flex-end;">
@@ -51,7 +51,7 @@
           <div
             style="display:flex;justify-content:center;align-items:center;height:calc(100vh - 200px);font-size:20px;color: grey;"
             v-if="!Employee"
-          >No selected Employee ID.</div>
+          >No selected Employee</div>
           <div class="order-panel">
             <div class="order-card-div" v-for="(data, i) in list" :key="i">
               <ordercard
@@ -83,12 +83,14 @@ export default {
   name: "assignment",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.stafflist();
   },
   data() {
     return {
       list: [],
       staff: [],
-      Employee: ""
+      Employee: "",
+      staff_list: []
     };
   },
   components: {
@@ -98,18 +100,23 @@ export default {
   methods: {
     search: function() {
       axios
-        .get("http://localhost/assign_search.php?employee=" + this.Employee)
+        .get("http://localhost/assignment_search.php?employee=" + this.Employee)
         .then(res => {
           this.list = res.data;
         });
     },
     callname: function() {
       axios
-        .get("http://localhost/assign_name.php?employee=" + this.Employee)
+        .get("http://localhost/assignment_name.php?employee=" + this.Employee)
         .then(res => {
           this.staff = res.data[0];
           console.log(this.staff);
         });
+    },
+    stafflist: function() {
+      axios.get('http://localhost/assignment_liststaff.php').then(res => {
+        this.staff_list = res.data;
+      })
     }
   }
 };

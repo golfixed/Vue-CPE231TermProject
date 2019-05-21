@@ -82,36 +82,20 @@
         <div style="overflow:scroll;padding:0 15px;">
           <table style="width:100%;">
             <tr style="border: 3px solid #d9d9d9;border-width: 3px 0 0 0;">
-              <th>Assignment NO</th>
+              <th>Movement NO</th>
               <th>Item Name</th>
               <th>Quantity</th>
               <th>Category</th>
               <th>Work Date</th>
-              <th>Employee NO</th>
+              <th>Employee Name</th>
             </tr>
-            <tr>
-              <td>0001</td>
-              <td>Micro Polycarbonate Grad A++</td>
-              <td>200</td>
-              <td>Move</td>
-              <td>20-10-2018</td>
-              <td>123456</td>
-            </tr>
-            <tr>
-              <td>0002</td>
-              <td>Micro Polycarbonate Grad B</td>
-              <td>120</td>
-              <td>Goods Out</td>
-              <td>19-10-2018</td>
-              <td>123457</td>
-            </tr>
-            <tr>
-              <td>0003</td>
-              <td>Dark Oak Wood from Italy (RAW)</td>
-              <td>500</td>
-              <td>Goods In</td>
-              <td>17-10-2018</td>
-              <td>123478</td>
+            <tr v-for="(data, i) in list" :key="i">
+              <td>{{data['MovementNo']}}</td>
+              <td>{{data['ItemName']}}</td>
+              <td>{{data['MoveQty']}}</td>
+              <td>{{data['MovementReason']}}</td>
+              <td>{{data['MoveDate']}}</td>
+              <td>{{data['EmployeeName']}}</td>
             </tr>
           </table>
         </div>
@@ -124,14 +108,30 @@
 import layout_main from "@/layouts/main.vue";
 import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
+import axios from "axios";
 export default {
   name: "assignment",
   created() {
     this.$emit(`update:layout`, layout_main);
+    this.FeatchList();
   },
   components: {
     toolbar,
     btn
+  },
+  data() {
+    return {
+      list: []
+    }
+  },
+  methods: {
+    FeatchList: function() {
+      axios.get('http://localhost/assignment_list.php').then(res => {
+        this.list = res.data;
+        console.log(this.list);
+        console.log(res.data);
+      })
+    }
   }
 };
 </script>
