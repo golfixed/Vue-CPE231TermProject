@@ -16,15 +16,6 @@
               <form style="display:grid;grid-template-rows: auto 32px;">
                 <div style="height: calc(100vh - 280px);">
                   <div style="display:flex;align-items:center;">
-                    <p class="paper-section-text">Assign To</p>
-                  </div>
-                  <div style="padding:10px 15px;">
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Employee NO</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                  </div>
-                  <div style="display:flex;align-items:center;">
                     <p class="paper-section-text">Assignment Detail</p>
                   </div>
                   <div style="padding:10px 15px;">
@@ -51,6 +42,15 @@
                     <div style="display: flex; margin: 10px 0;">
                       <p class="box-text">Order Date</p>
                       <input style="width: 219px;" class="textbox" type="date">
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;">
+                    <p class="paper-section-text">Assign To</p>
+                  </div>
+                  <div style="padding:10px 15px;">
+                    <div style="display: flex; margin: 10px 0;">
+                      <p class="box-text">Employee NO</p>
+                      <input style="width: 219px;" class="textbox" type="text">
                     </div>
                   </div>
                 </div>
@@ -122,15 +122,15 @@ export default {
   data() {
     return {
       list: []
-    }
+    };
   },
   methods: {
     FeatchList: function() {
-      axios.get('http://localhost/assignment_list.php').then(res => {
+      axios.get("http://localhost/assignment_list.php").then(res => {
         this.list = res.data;
         console.log(this.list);
         console.log(res.data);
-      })
+      });
     }
   }
 };
