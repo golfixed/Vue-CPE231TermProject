@@ -171,9 +171,40 @@ table thead tr {
   align-items: center;
 }
 .btn-refresh {
-    background-color: #f1f1f1;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 5px 10px;
+  background-color: #f1f1f1;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.section-side-text {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.savemessage-box{
+    /* height: 50px; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 11px 0px;
+}
+.mb-grey{
+    background-color: #e9ecef7d;
+    border: 1px solid #dee2e6;
+}
+.mb-green{
+    background-color: #28a74540;
+    border: 1px solid #28a7456b;
+}
+.mb-red{
+    background-color: #ff52522b;
+    border: 1px solid #ff52524f;
 }
 </style>
