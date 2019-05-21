@@ -11,16 +11,34 @@
             <form>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Doc NO</p>
-                <input class="textbox" type="number" v-model="DocNO" min="1">
+                <input class="textbox" type="number" v-model="RefNo" min="1">
               </div>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Document Type</p>
-                <input class="textbox" type="date">
+                <select v-model="DocType" @change="search();" style="width:250px;height:32px;">
+                  <option value>Select Document Type</option>
+                  <option value="POO">Purchase PO</option>
+                  <option value="PRT">Purchase Return</option>
+                  <option value="SOO">Sales</option>
+                  <option value="SRT">Sale Return</option>
+                  <option value="PWO">Produced WO</option>
+                  <option value="PMO">Produced MO</option>
+                  <option value="WOR">Production Return</option>
+                  <option value="MOR">Production Reject for MO</option>
+                  <option value="RWO">Raw Mat Return WO</option>
+                  <option value="RMO">Raw Mat Return MO</option>
+                  <option value="IWO">Raw Material Issue WO</option>
+                  <option value="IMO">Raw Material Issue MO</option>
+                  <option value="ADI">Adjust In</option>
+                  <option value="ADO">Adjust Out</option>
+                  <option value="TFI">Tranfer In</option>
+                  <option value="TFO">Tranfer Out</option>
+                </select>
               </div>
-              <div style="display: flex; justify-content:flex-end;">
-                <button class="btn-refresh" @click="fetchList()" >Clear</button>
-                <button class="btn-refresh" @click="search()" >New Search</button>
-              </div>
+              <!-- <div style="display: flex; justify-content:flex-end;">
+                <button class="btn-refresh" @click="fetchList()">Clear</button>
+                <button style="margin-left: 10px;" class="btn-refresh" @click="search()">Search</button>
+              </div>-->
             </form>
           </div>
         </div>
@@ -28,14 +46,22 @@
           <table class="doc-list-table">
             <thead>
               <tr>
-                <th>Ref No</th>
                 <th>Doc No</th>
+                <th>Doc Type</th>
+                <th>Reccord</th>
                 <th>Doc Date</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(data, i) in list" :key="i" @click="click(data.id)">
-                <td>{{ data.id }}</td>
+              <tr
+                v-for="(data, i) in list"
+                :key="i"
+                @click="ShowResult(data['DocNo']);noselectf();"
+              >
+                <td>{{data['DocNo']}}</td>
+                <td>{{data['MovementCode']}}</td>
+                <td>{{data['Reccord']}}</td>
+                <td>{{data['DocDate']}}</td>
               </tr>
             </tbody>
             <tr>
@@ -47,66 +73,98 @@
         </div>
       </div>
       <div class="viewing-div">
-        <div style="display:flex;align-items:center;height:100%;" v-if="!document">No document is selected.</div>
+        <div
+          style="display:flex;align-items:center;height:100%;"
+          v-if="!document"
+        >No document is selected.</div>
         <div class="doc-paper" v-if="document">
-          <form>
-            <div class="doc-paper-grid">
-              <div class="doc-paper-header">
-                <div>
-                  <img src="/static/img/logo_grey.png" style="height:70px;">
-                </div>
-                <div>
-                  <h5>
-                    BUSIFRIEND Company Limited
-                    <br>
-                    <b>Warehouse Devision</b>
-                  </h5>
-                  <p>Tel. +662-000-0000 | Prachauthit 52, Bangkok, 10140</p>
-                </div>
+          <div>
+            <div class="doc-paper-header">
+              <div>
+                <img src="/static/img/logo_grey.png" style="height:70px;">
               </div>
-              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
+              <div>
+                <h5>
+                  BUSIFRIEND Company Limited
+                  <br>
+                  <b>Warehouse Devision</b>
+                </h5>
+                <p>Tel. +662-000-0000 | Prachauthit 52, Bangkok, 10140</p>
+              </div>
+            </div>
+            <div class="doctype-title">{{document['MovementReason']}}</div>
+            <div>
+              <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Document Header</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Ref NO:</p>
-                <p class="paper-text-show">1120</p>
+                <p class="paper-text-show">{{document['RefNo']}}</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Doc NO:</p>
-                <p class="paper-text-show">{{ document.DocNo }}</p>
+                <p class="paper-text-show">{{document['DocNo']}}</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Date:</p>
-                <p class="paper-text-show">03-10-2015</p>
+                <p class="paper-text-show">{{document['DocDate']}}</p>
               </div>
-              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
+              <div style="display:flex;align-items:flex-end;">
                 <p class="paper-section-text">Order Information</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Quantity:</p>
-                <p class="paper-text-show">3000 Unit</p>
+                <p class="paper-text-show">{{document['Qty']}}</p>
               </div>
               <div class="paper-textbox-div">
-                <p class="paper-textbox-label" style="width: 215px;">Movement Code:</p>
-                <p class="paper-text-show">7457</p>
+                <p class="paper-textbox-label">Category:</p>
+                <p class="paper-text-show">{{document['MovementReason']}}</p>
               </div>
               <div class="paper-textbox-div">
                 <p class="paper-textbox-label">Location:</p>
-                <p class="paper-text-show">AB1234</p>
+                <p class="paper-text-show">{{document['Location']}}</p>
               </div>
-              <div style="grid-column: span 2;display:flex;align-items:flex-end;">
-                <p class="paper-section-text">Notes & Approval</p>
+              <div class="paper-textbox-div" v-if="document['CustomerNo']">
+                <p class="paper-textbox-label">Customer:</p>
+                <p class="paper-text-show">{{document['CustomerName']}}</p>
               </div>
-              <div class="paper-textbox-div">
-                <p class="paper-textbox-label">Notes:</p>
-                <p class="paper-text-show">This is just a temporary document.</p>
+              <div class="paper-textbox-div" v-if="document['SupplierNo']">
+                <p class="paper-textbox-label">Supplier:</p>
+                <p class="paper-text-show">{{document['SupplierName']}}</p>
               </div>
-              <div class="paper-textbox-div">
+              <div class="paper-textbox-div" v-if="document['ReturnNo']">
+                <p class="paper-textbox-label">Return No:</p>
+                <p class="paper-text-show">{{document['ReturnType']}}</p>
+              </div>
+              <div style="display:flex;align-items:flex-end;">
+                <p class="paper-section-text">Document Movement</p>
+              </div>
+              <table style="width:100%;">
+                <tr style="border: 3px solid #d9d9d9;border-width: 3px 0 0 0;">
+                  <th>Ref No</th>
+                  <th>Item No</th>
+                  <th>Quantity</th>
+                  <th>Location</th>
+                </tr>
+
+                <tr v-for="(data, i) in list" :key="i" @click="showResult(data['ItemName'])">
+                  <td>{{data['ItemNo']}}</td>
+                  <td>{{data['ItemName']}}</td>
+                  <td>{{data['Location']}}</td>
+                  <td>{{data['OnHandQty']}}</td>
+                  <td>{{data['Unit']}}</td>
+                  <td>{{data['ItemType']}}</td>
+                </tr>
+              </table>
+              <div style="display:flex;align-items:flex-end;">
+                <p class="paper-section-text">Approval</p>
+              </div>
+              <div class="paper-textbox-div" style="grid-column: span 2;">
                 <p class="paper-textbox-label">Approved by:</p>
-                <p class="paper-text-show">T. Peerapong</p>
+                <p class="paper-text-show">{{document['EmployeeNo']}} {{document['EmployeeName']}}</p>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -123,64 +181,64 @@ export default {
   name: "document",
   created() {
     this.$emit(`update:layout`, layout_main);
-    this.click(500);
     this.fetchList();
+    this.ShowResult(500);
   },
   data() {
     return {
       list: [],
       document: {},
-      RefNO: ""
-    }
+      DocNo: "",
+      DocType: ""
+    };
   },
   components: {
     toolbar,
     btn
   },
   methods: {
-    fetchList: function () {
-      // 
-      axios.get('http://localhost/document_list.php')
-        .then(res => {
-          console.log(res)
-          // Mockup
-          this.list = [
-            {
-              id: 1
-            },
-            {
-              id: 2
-            }
-          ]
-            // Real use
-            // this.list = res.data
-        })
+    fetchList: function() {
+      axios.get("http://localhost/document_list.php").then(res => {
+        this.list = res.data;
+      });
     },
-    click: function(id){
-      axios.get('http://localhost/document_list.php?id='+id)
-        .then(res => {
-          this.document = res.data[0]
-          console.log(this.document)
-        })
+    noselectf: function() {
+      this.noselect = false;
     },
-    search: function(){
-      console.log('search')
-      axios.get('http://localhost/document_list.php?RefNO=' + this.RefNO)
+    ShowResult: function(DocNo) {
+      axios
+        .get("http://localhost/document_show.php?docno=" + DocNo + "$type=" + DocType)
         .then(res => {
-          console.log('res')
-          //  Mock up
-          this.list = [
-            { id: 10 }
-          ]
-          // Real use
-          // this.list = res.data
-        })
+          this.document = res.data[0];
+          console.log(this.document);
+        });
+    },
+    search: function() {
+      axios
+        .get(
+          "http://localhost/document_search.php?docno=" +
+            this.DocNo +
+            "&type=" +
+            this.DocType
+        )
+        .then(res => {
+          this.list = res.data;
+          console.log(res);
+        });
     }
   }
 };
 </script>
 
 <style scoped>
+.doctype-title {
+  font-size: 20px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
 .page-display-doc {
   display: grid;
   grid-template-columns: 400px calc(100vw - 600px);
@@ -203,10 +261,11 @@ export default {
   background-color: white;
   min-width: 400px;
   width: 800px;
-  max-width: 800px;
+  height: fit-content;
+  /* max-width: 800px;
   min-height: 500px;
   height: 700px;
-  max-height: 1200px;
+  max-height: 1200px; */
   box-shadow: /* The top layer shadow */ 0 -1px 1px rgba(0, 0, 0, 0.15),
     /* The second layer */ 0 -10px 0 -5px #eee,
     /* The second layer shadow */ 0 -10px 1px -4px rgba(0, 0, 0, 0.15),
@@ -214,12 +273,6 @@ export default {
     /* The third layer shadow */ 0 -20px 1px -9px rgba(0, 0, 0, 0.15);
   padding: 15px;
 }
-.doc-paper-grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100px 50px 60px 60px 20px 60px 60px auto 40px 60px;
-}
-
 .doc-paper-header {
   grid-column: span 2;
   border: solid grey;
@@ -237,9 +290,9 @@ export default {
   padding: 0 10px;
 }
 .btn-refresh {
-    background-color: #f1f1f1;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding: 5px 10px;
+  background-color: #f1f1f1;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="home-layout">
     <div>
-      <toolbar pagename="Stocking"/>
+      <toolbar pagename="Count List"/>
     </div>
     <div class="page-display">
       <div class="assignment2-display-grid">
@@ -9,14 +9,14 @@
           class="wo-searchbar"
           style="display:flex;justify-content: space-between;align-items:center;"
         >
-          <h5 style="margin:0px;padding-right:20px;">Stock List</h5>
+          <h5 style="margin:0px;padding-right:20px;">Counted List</h5>
           <div>
             <input
               style="height:32px;"
               type="text"
               class="textbox"
-              placeholder="Item Name"
-              v-model="ItemName"
+              placeholder="Item NO"
+              v-model="itemno"
             >
             <button class="btn-refresh" @click="search()" style="margin-left:5px;">Search</button>
           </div>
@@ -24,21 +24,21 @@
         <div style="overflow:scroll;padding:0 15px;">
           <table style="width:100%;">
             <tr style="border: 3px solid #d9d9d9;border-width: 3px 0 0 0;">
-              <th>Item NO</th>
-              <th>Item Name</th>
+              <th>Count No</th>
               <th>Location</th>
+              <th>Item No</th>
               <th>Quantity</th>
-              <th>Unit</th>
-              <th>Type</th>
+              <th>Count Date</th>
+              <th>Employee No</th>
             </tr>
             
             <tr v-for="(data, i) in list" :key="i" @click="showResult(data['ItemName'])">
-              <td>{{data['ItemNo']}}</td>
-              <td>{{data['ItemName']}}</td>
+              <td>{{data['CountNo']}}</td>
               <td>{{data['Location']}}</td>
-              <td>{{data['OnHandQty']}}</td>
-              <td>{{data['Unit']}}</td>
-              <td>{{data['ItemType']}}</td>
+              <td>{{data['ItemNo']}}</td>
+              <td>{{data['CountQty']}}</td>
+              <td>{{data['CountDate']}}</td>
+              <td>{{data['EmployeeNo']}}</td>
             </tr>
 
           </table>
@@ -54,7 +54,7 @@ import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
 import axios from "axios";
 export default {
-  name: "stocking",
+  name: "countlist",
   created() {
     this.$emit(`update:layout`, layout_main);
     this.fetchList();
@@ -66,18 +66,18 @@ export default {
   data() {
     return {
       list: [],
-      ItemName: ""
+      itemno: ""
     };
   },
   methods: {
     fetchList: function() {
-      axios.get("http://localhost/stocking_list.php").then(res => {
+      axios.get("http://localhost/countlist_list.php").then(res => {
         this.list = res.data;
       });
     },
     search: function() {
       axios
-        .get("http://localhost/stocking_search.php?id=" + this.ItemName)
+        .get("http://localhost/countlist_search.php?itemno=" + this.itemno)
         .then(res => {
           this.list = res.data;
         });

@@ -5,13 +5,14 @@ const Home = () => import('@/views/home')
 import Dashboard from '@/views/dashboard'
 import Document from '@/views/document'
 import Assignment from '@/views/assignment'
-import Assignment2 from '@/views/assignment2'
+import Assignment_list from '@/views/assignment_list'
 import Customer from '@/views/customer'
 import Supplier from '@/views/supplier'
 import Stocking from '@/views/stocking'
 import PhysicalCount from '@/views/physicalcount'
 import Adjust from '@/views/adjust'
 import Transfer from '@/views/transfer'
+import CountList from '@/views/count_list'
 // import Delivery from '@/views/Delivery'
 const Delivery = () => import('@/views/Delivery')
 
@@ -50,7 +51,7 @@ const router = new Router({
     {
       path: '/assignment/manager',
       name: 'Manager Assignment',
-      component: Assignment2,
+      component: Assignment_list,
       meta: {
         roles: ['admin']
       }
@@ -90,6 +91,11 @@ const router = new Router({
       name: 'Delivery',
       component: Delivery
     },
+    {
+      path: '/countlist',
+      name: 'Count List',
+      component: CountList
+    }
   ]
 })
 

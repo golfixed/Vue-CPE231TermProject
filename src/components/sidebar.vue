@@ -9,11 +9,12 @@
       <ul>
         <sidebaritem linkto="/" icon="fas fa-home" label="Home"/>
         <sidebaritem linkto="/document" icon="fas fa-file-alt" label="Document"/>
-        <sidebaritem linkto="/assignment/staff" icon="fas fa-edit" label="Assignment"/>
-        <sidebaritem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment"/>
+        <sidebaritem linkto="/assignment/staff" icon="fas fa-columns" label="Assignment"/>
+        <sidebaritem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment List"/>
         <sidebaritem linkto="/customer" icon="fas fa-users" label="Customer"/>
         <sidebaritem linkto="/supplier" icon="fas fa-truck-loading" label="Supplier"/>
         <sidebaritem linkto="/stocking" icon="fas fa-chart-pie" label="Stocking"/>
+        <sidebaritem linkto="/countlist" icon="fas fa-th-list" label="Count List"/>
         <sidebaritem linkto="/physicalcount" icon="fas fa-pencil-ruler" label="Physical Count"/>
         <sidebaritem linkto="/adjust" icon="fas fa-sliders-h" label="Adjust"/>
         <sidebaritem linkto="/transfer" icon="fas fa-arrows-alt" label="Transfer"/>

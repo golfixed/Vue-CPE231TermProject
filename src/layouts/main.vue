@@ -134,11 +134,11 @@ table thead {
 }
 table tbody {
   overflow: auto;
-  height: calc(100vh - 410px);
+  height: calc(100vh - 362px);
 }
 table thead tr th,
 table tbody tr td {
-  width: 123px;
+  width: 184px;
 }
 table thead tr {
   border: 0px solid #d6d6d6;
@@ -157,7 +157,7 @@ table thead tr {
 }
 .searchbar-display {
   display: grid;
-  grid-template-rows: 180px auto;
+  grid-template-rows: 132px auto;
 }
 .searchbox,
 .listbox {

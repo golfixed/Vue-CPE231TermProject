@@ -97,9 +97,22 @@
           </div>
           <div v-if="status === 'success'" class="savemessage-box mb-green">
             <h6 style="margin:0;margin-left:10px;">Successfully saved to the database</h6>
-            <button class="btn-refresh" style="margin-right:10px;" value="Refresh Page" onClick="window.location.reload();">Add More</button>
+            <button
+              class="btn-refresh"
+              style="margin-right:10px;"
+              value="Refresh Page"
+              onClick="window.location.reload();"
+            >Add More</button>
           </div>
-          <div v-if="status === 'error'" class="savemessage-box mb-red">ERROR! Data not save to the database</div>
+          <div v-if="status === 'error'" class="savemessage-box mb-red">
+            <h6 style="margin:0;margin-left:10px;">ERROR! Data not save to the database</h6>
+            <button
+              class="btn-refresh"
+              style="margin-right:10px;"
+              value="Refresh Page"
+              onClick="window.location.reload();"
+            >Clear</button>
+          </div>
         </div>
       </div>
     </div>
@@ -132,7 +145,8 @@ export default {
   },
   methods: {
     select: function() {
-      axios.get(
+      axios
+        .get(
           "http://localhost/phycount_select.php?no=" +
             this.ItemNo +
             "&location=" +
@@ -143,24 +157,24 @@ export default {
         });
     },
     send: function() {
-      axios.get(
-        "http://localhost/phycount_save.php?qty=" +
-          this.qty +
-          "&employee=" +
-          this.employee +
-          "&itemno=" +
-          this.ItemNo +
-          "&location=" +
-          this.Location
-      )
-      .then(res => {
-        if (res.data === 'success'){
-          this.status = "success"
-        }
-        else {
-          this.status = "error"
-        }
-      });
+      axios
+        .get(
+          "http://localhost/phycount_save.php?qty=" +
+            this.qty +
+            "&employee=" +
+            this.employee +
+            "&itemno=" +
+            this.ItemNo +
+            "&location=" +
+            this.Location
+        )
+        .then(res => {
+          if (res.data === "success") {
+            this.status = "success";
+          } else {
+            this.status = "error";
+          }
+        });
     }
   }
 };
