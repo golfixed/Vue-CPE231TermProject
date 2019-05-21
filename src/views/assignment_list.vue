@@ -1,46 +1,45 @@
 <template>
   <div class="home-layout">
     <div>
-      <toolbar pagename="Stocking"/>
+      <toolbar pagename="Assignment List"/>
     </div>
-    <div class="page-display">
+    <div>
+      <div style="border:1px solid #d9d9d9;border-width:0 1px 0 0;">
+      </div>
       <div class="assignment2-display-grid">
         <div
           class="wo-searchbar"
           style="display:flex;justify-content: space-between;align-items:center;"
         >
-          <h5 style="margin:0px;padding-right:20px;">Stock List</h5>
+          <h5 style="margin:0px;padding-right:20px;">On Going Work Orders</h5>
           <div>
             <input
-              style="height:32px;"
+              style="margin-right: 5px;height:32px;"
               type="text"
               class="textbox"
-              placeholder="Item Name"
-              v-model="ItemName"
+              placeholder="Movement NO"
             >
-            <button class="btn-refresh" @click="search()" style="margin-left:5px;">Search</button>
+            <btn text="Search" color="btn-refresh"/>
           </div>
         </div>
         <div style="overflow:scroll;padding:0 15px;">
           <table style="width:100%;">
             <tr style="border: 3px solid #d9d9d9;border-width: 3px 0 0 0;">
-              <th>Item NO</th>
+              <th>Movement NO</th>
               <th>Item Name</th>
-              <th>Location</th>
               <th>Quantity</th>
-              <th>Unit</th>
-              <th>Type</th>
+              <th>Category</th>
+              <th>Work Date</th>
+              <th>Employee Name</th>
             </tr>
-            
-            <tr v-for="(data, i) in list" :key="i" @click="showResult(data['ItemName'])">
-              <td>{{data['ItemNo']}}</td>
+            <tr v-for="(data, i) in list" :key="i">
+              <td>{{data['MovementNo']}}</td>
               <td>{{data['ItemName']}}</td>
-              <td>{{data['Location']}}</td>
-              <td>{{data['OnHandQty']}}</td>
-              <td>{{data['Unit']}}</td>
-              <td>{{data['ItemType']}}</td>
+              <td>{{data['MoveQty']}}</td>
+              <td>{{data['MovementReason']}}</td>
+              <td>{{data['MoveDate']}}</td>
+              <td>{{data['EmployeeName']}}</td>
             </tr>
-
           </table>
         </div>
       </div>
@@ -54,10 +53,10 @@ import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
 import axios from "axios";
 export default {
-  name: "stocking",
+  name: "assignment",
   created() {
     this.$emit(`update:layout`, layout_main);
-    this.fetchList();
+    this.FeatchList();
   },
   components: {
     toolbar,
@@ -65,22 +64,14 @@ export default {
   },
   data() {
     return {
-      list: [],
-      ItemName: ""
+      list: []
     };
   },
   methods: {
-    fetchList: function() {
-      axios.get("http://localhost/stocking_list.php").then(res => {
+    FeatchList: function() {
+      axios.get("http://localhost/assignment_list.php").then(res => {
         this.list = res.data;
       });
-    },
-    search: function() {
-      axios
-        .get("http://localhost/stocking_search.php?id=" + this.ItemName)
-        .then(res => {
-          this.list = res.data;
-        });
     }
   }
 };
@@ -90,9 +81,6 @@ export default {
 .addingbar {
   padding: 15px;
   height: 100%;
-}
-.page-display {
-  height: calc(100vh - 150px);
 }
 .assignment2-display-grid {
   display: grid;

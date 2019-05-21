@@ -4,22 +4,23 @@
       <toolbar pagename="Home"/>
     </div>
     <div class="page-display">
-      <pagesection icon="fas fa-chart-pie" sectext="Summary"/>
+      <!-- <pagesection icon="fas fa-chart-pie" sectext="Summary"/>
       <div class="dashboard">
         <stockgraph labeltext="Overview Stock" style="grid-column: span 2; grid-row: span 2;"/>
         <numbercard value="12K" label="Raw Material Stock"/>
         <numbercard value="20K" label="Produced Good Stock"/>
         <numbercard value="343" label="Order Requested"/>
         <numbercard value="785" label="Good  Requested"/>
-      </div>
-      <pagesection style="margin-top: 20px;" icon="fas fa-cubes" sectext="Menu"/>
+      </div> -->
+      <!-- <pagesection style="margin-top: 20px;" icon="fas fa-cubes" sectext="Menu"/> -->
       <div class="menu-item-box">
         <mitem linkto="/document" icon="fas fa-file-alt" label="Document"/>
-        <mitem linkto="/assignment/staff" icon="fas fa-edit" label="Assignment"/>
-        <mitem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment"/>
+        <mitem linkto="/assignment/staff" icon="fas fa-columns" label="Assignment"/>
+        <mitem linkto="/assignment/manager" icon="fas fa-edit" label="Assignment List"/>
         <mitem linkto="/customer" icon="fas fa-users" label="Customer"/>
         <mitem linkto="/supplier" icon="fas fa-truck-loading" label="Supplier"/>
         <mitem linkto="/stocking" icon="fas fa-chart-pie" label="Stocking"/>
+        <mitem linkto="/physicalcount" icon="fas fa-th-list" label="Count List"/>
         <mitem linkto="/physicalcount" icon="fas fa-pencil-ruler" label="Physical Count"/>
         <mitem linkto="/adjust" icon="fas fa-sliders-h" label="Adjust"/>
         <mitem linkto="/transfer" icon="fas fa-arrows-alt" label="Transfer"/>
@@ -52,7 +53,6 @@ export default {
   methods: {
     role(allows) {
       this.$store.state.user;
-      console.log(allows.includes(this.$store.state.user));
       return allows.includes(this.$store.state.user);
     }
   }

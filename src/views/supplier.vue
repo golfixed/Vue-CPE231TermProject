@@ -119,7 +119,6 @@ export default {
   methods: {
     fetchList: function() {
       axios.get("http://localhost/supplier_list.php").then(res => {
-        console.log(res);
         this.list = res.data;
         // this.count = res.data2
       });
@@ -127,16 +126,12 @@ export default {
     showResult: function(id) {
       axios.get("http://localhost/supplier_show.php?id=" + id).then(res => {
         this.result = res.data[0];
-        console.log(res);
       });
     },
     search: function() {
-      console.log(this.SupplierName);
-      console.log("search");
       axios
         .get("http://localhost/supplier_search.php?id=" + this.SupplierName)
         .then(res => {
-          console.log("res");
           this.list = res.data;
         });
     },

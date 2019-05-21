@@ -1,7 +1,7 @@
 <template>
   <div class="home-layout">
     <div>
-      <toolbar pagename="Staff Assignment" event="search();callname();"/>
+      <toolbar pagename="Assignment"/>
     </div>
     <div class="page-display">
       <div class="assignment-display-grid">
@@ -10,32 +10,14 @@
             <form style="display: flex;align-items: center;">
               <div style="display: flex;">
                 <p style="width:100px;" class="box-text">Employee NO</p>
-                <!-- <input
-                  class="textbox"
-                  style="height:32px;width:230px;border-radius: 5px 0px 0px 5px;border-width: 1px 0px 1px 1px;"
-                  type="text"
-                  name="search_name"
-                  v-model="Employee"
-                >-->
                 <select
                   v-model="Employee"
                   @change="search();callname();"
-                  style="width:200px;height:32px;"
+                  style="width:auto;height:32px;"
                 >
                   <option v-for="(data,i) in staff_list" :key="i" :value="data['employeeno']">{{data['employeeno']}}  {{data['employeename']}}</option>
-                  <!-- <option value="2">000002 Nithiwadee W.</option>
-                  <option value="3">000003 Bhaksiree T.</option>
-                  <option value="4">000004 Peerapong T.</option>
-                  <option value="5">000005 Patipan P.</option> -->
                 </select>
               </div>
-              <!-- <div style="display: flex; justify-content:flex-end;">
-                <button
-                  class="btn-refresh"
-                  @click="search();callname();"
-                  style="border-radius: 0px 5px 5px 0;"
-                ><i class="fa fa-search"></i></button>
-              </div>-->
             </form>
           </div>
           <div class="sec1">
@@ -110,7 +92,6 @@ export default {
         .get("http://localhost/assignment_name.php?employee=" + this.Employee)
         .then(res => {
           this.staff = res.data[0];
-          console.log(this.staff);
         });
     },
     stafflist: function() {
