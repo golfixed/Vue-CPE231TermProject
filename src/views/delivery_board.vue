@@ -1,7 +1,7 @@
 <template>
   <div class="home-layout">
     <div>
-      <toolbar pagename="Assignment"/>
+      <toolbar pagename="Delivery Board"/>
     </div>
     <div class="page-display">
       <div class="assignment-display-grid">
@@ -62,7 +62,7 @@ import toolbar from "@/components/toolbar.vue";
 import ordercard from "@/components/order-card.vue";
 import axios from "axios";
 export default {
-  name: "assignment",
+  name: "deliveryboard",
   created() {
     this.$emit(`update:layout`, layout_main);
     this.stafflist();
@@ -83,20 +83,21 @@ export default {
   methods: {
     search: function() {
       axios
-        .get("http://localhost/assignment_search.php?employee=" + this.Employee)
+        .get("http://localhost/delivery_search.php?employee=" + this.Employee)
         .then(res => {
           this.list = res.data;
+          console.log(res);
         });
     },
     callname: function() {
       axios
-        .get("http://localhost/assignment_name.php?employee=" + this.Employee)
+        .get("http://localhost/delivery_name.php?employee=" + this.Employee)
         .then(res => {
           this.staff = res.data[0];
         });
     },
     stafflist: function() {
-      axios.get('http://localhost/assignment_liststaff.php').then(res => {
+      axios.get('http://localhost/delivery_liststaff.php').then(res => {
         this.staff_list = res.data;
       })
     }

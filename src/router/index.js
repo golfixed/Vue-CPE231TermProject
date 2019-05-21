@@ -13,6 +13,7 @@ import PhysicalCount from '@/views/physicalcount'
 import Adjust from '@/views/adjust'
 import Transfer from '@/views/transfer'
 import CountList from '@/views/count_list'
+import Delivery_board from '@/views/delivery_board'
 // import Delivery from '@/views/Delivery'
 const Delivery = () => import('@/views/Delivery')
 
@@ -90,6 +91,11 @@ const router = new Router({
       path: '/delivery',
       name: 'Delivery',
       component: Delivery
+    },
+    {
+      path: '/delivery/dashboard',
+      name: 'Delivery',
+      component: Delivery_board
     },
     {
       path: '/countlist',

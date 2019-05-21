@@ -18,6 +18,7 @@
         <sidebaritem linkto="/physicalcount" icon="fas fa-pencil-ruler" label="Physical Count"/>
         <sidebaritem linkto="/adjust" icon="fas fa-sliders-h" label="Adjust"/>
         <sidebaritem linkto="/transfer" icon="fas fa-arrows-alt" label="Transfer"/>
+        <sidebaritem linkto="/delivery/dashboard" icon="fas fa-clipboard-list" label="Delivery Board"/>
         <sidebaritem linkto="/delivery" icon="fas fa-truck" label="Delivery"/>
       </ul>
     </div>

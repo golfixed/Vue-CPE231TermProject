@@ -24,6 +24,7 @@
         <mitem linkto="/physicalcount" icon="fas fa-pencil-ruler" label="Physical Count"/>
         <mitem linkto="/adjust" icon="fas fa-sliders-h" label="Adjust"/>
         <mitem linkto="/transfer" icon="fas fa-arrows-alt" label="Transfer"/>
+        <mitem linkto="/delivery/dashboard" icon="fas fa-clipboard-list" label="Delivery Board"/>
         <mitem linkto="/delivery" icon="fas fa-truck" label="Delivery"/>
       </div>
     </div>
