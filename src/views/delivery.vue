@@ -5,100 +5,92 @@
     </div>
     <div class="page-display">
       <div style="border:1px solid #d9d9d9;border-width:0 1px 0 0;">
-        <div style="display:flex;justify-content:center;">
+        <div class>
           <div class="addingbar">
-            <div
-              style="padding:20px 0;display:flex;justify-content: space-between;align-items:center;"
-            >
-              <h5 style="margin:0px;padding-right:20px;">Add new delivery order</h5>
+            <div class="section-side-text">
+              <h5 style="margin:0px;padding-right:20px;">Not delivery yet</h5>
             </div>
             <div>
-              <form
-                style="display:grid;grid-template-rows: auto 32px; grid-template-columns: 50% 50%;grid-gap:15px;"
-              >
+              <form>
                 <div style="height: calc(100vh - 280px);">
                   <div style="display:flex;align-items:center;">
-                    <p class="paper-section-text">Customer Detail</p>
+                    <p class="paper-section-text">Search</p>
                   </div>
                   <div style="padding:10px 15px;">
                     <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Customer Name</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Address</p>
-                      <textarea
-                        class="paper-textarea-box"
+                      <p class="box-text">Movement No</p>
+                      <input
                         style="width: 219px;"
-                        name="cus-address"
-                      />
+                        class="textbox"
+                        type="number"
+                        v-model="movementno"
+                        min="1"
+                      >
+                    </div>
+                    <div style="display:flex; justify-content:flex-end;">
+                      <button class="btn-refresh" @click="select()" style="margin-left:10px;">Search</button>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:center;">
-                    <p class="paper-section-text">Contact Inforamtion</p>
+
+                  <div style="display:flex;align-items:flex-end;">
+                    <p class="paper-section-text">Detail</p>
                   </div>
-                  <div style="padding:10px 15px;">
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Phone</p>
-                      <input style="width: 219px;" class="textbox" type="text">
+                  <div style="overflow:scroll;padding:15px;">
+                    <div class="paper-textbox-div">
+                      <p class="paper-textbox-label">Movement No:</p>
+                      <p class="paper-text-show card-label">{{selectdata['movementno']}}</p>
                     </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Email</p>
-                      <input style="width: 219px;" class="textbox" type="text">
+                    <div class="paper-textbox-div">
+                      <p class="paper-textbox-label">Doc no:</p>
+                      <p class="paper-text-show card-label">{{selectdata['docno']}}</p>
                     </div>
-                  </div>
-                </div>
-                <div>
-                  <div style="display:flex;align-items:center;">
-                    <p class="paper-section-text">Movement Detail</p>
-                  </div>
-                  <div style="padding:10px 15px;">
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Movement NO</p>
-                      <input style="width: 219px;" class="textbox" type="text">
+                    <div class="paper-textbox-div">
+                      <p class="paper-textbox-label">Item Name:</p>
+                      <p class="paper-text-show card-label">{{selectdata['itemname']}}</p>
                     </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Ref NO</p>
-                      <input style="width: 219px;" class="textbox" type="text">
+                    <div class="paper-textbox-div">
+                      <p class="paper-textbox-label">Quantity:</p>
+                      <p class="paper-text-show card-label">{{selectdata['moveqty']}}</p>
                     </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Item NO</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Move Quantity</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Location</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Order Date</p>
-                      <input style="width: 219px;" class="textbox" type="date">
+                    <div class="paper-textbox-div">
+                      <p class="paper-textbox-label">Cuostomer:</p>
+                      <p class="paper-text-show card-label">{{selectdata['customername']}}</p>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:center;">
-                    <p class="paper-section-text">Assign To</p>
-                  </div>
-                  <div style="padding:10px 15px;">
-                    <div style="display: flex; margin: 10px 0;">
-                      <p class="box-text">Employee NO</p>
-                      <input style="width: 219px;" class="textbox" type="text">
-                    </div>
-                  </div>
-                </div>
-                <div style="display: flex; justify-content:flex-end;grid-column: span 2;">
-                  <btn
-                    text="Clear"
-                    btntype="reset"
-                    style="margin-right: 10px;"
-                    color="btn-refresh"
-                  />
-                  <btn text="Assign" color="btn-refresh"/>
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="phycount-display">
+        <div class="section-side-text">
+          <h5 style="margin:0px;padding-right:20px;">Count</h5>
+        </div>
+        <div class="count-box">
+          <div style="display:flex;align-items:center;">
+            <p class="paper-section-text">Input Count</p>
+          </div>
+          <div style="padding:10px 15px;border: 1px solid #e8ecef;">
+            <div style="display: flex; margin: 10px 0;">
+              <p class="box-text">Quantity</p>
+              <input style="width: 219px;" class="textbox" type="text" v-model="qty">
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;">
+            <p class="paper-section-text">Count By</p>
+          </div>
+          <div style="padding:10px 15px;border: 1px solid #e8ecef;">
+            <div style="display: flex; margin: 10px 0;">
+              <p class="box-text">Employee NO</p>
+              <input style="width: 219px;" class="textbox" type="text" v-model="employee">
+            </div>
+          </div>
+          <div style="display: flex; justify-content:flex-end;margin: 15px 0px;">
+            <button class="btn-refresh" @click="send()" style="margin-left:10px;">Save</button>
+          </div>
+          <div>
+            {{save}}
           </div>
         </div>
       </div>
@@ -107,20 +99,115 @@
 </template>
 
 <script>
-import toolbar from "@/components/toolbar.vue";
 import layout_main from "@/layouts/main.vue";
+import toolbar from "@/components/toolbar.vue";
 import btn from "@/components/btn/btn-main.vue";
+import axios from "axios";
 export default {
-  name: "delivery",
+  name: "PhysicalCount",
   created() {
     this.$emit(`update:layout`, layout_main);
   },
   components: {
     toolbar,
     btn
+  },
+  data() {
+    return {
+      selectdata: [],
+      movementno: "",
+    };
+  },
+  methods: {
+    select: function() {
+      axios
+        .get("http://localhost/delivery_show.php?movementno=" + this.movementno)
+        .then(res => {
+          this.selectdata = res.data[0];
+          console.log(this.selectdata);
+        });
+    },
+    send: function() {
+      axios.get("http://localhost/phycount_save.php?qty=" + this.qty +
+          "&employee=" +
+          this.employee +
+          "&itemno=" +
+          this.ItemNo +
+          "&location=" +
+          this.Location
+      ).then(res => {
+        this.save = res.save;
+        console.log(res.save);
+      }
+      );
+    }
   }
 };
 </script>
 
 <style scoped>
+.count-box {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+}
+.phycount-display {
+  background-color: #ffffff;
+  padding: 15px;
+}
+.addingbar {
+  padding: 15px;
+  height: 100%;
+}
+.page-display {
+  display: grid;
+  grid-template-columns: 400px calc(100vw - 600px);
+  height: calc(100vh - 150px);
+}
+.wo-searchbar {
+  padding: 20px;
+}
+th {
+  text-align: center;
+  /* background-color: #ececec; */
+}
+td,
+th {
+  border: 1px solid #d6d6d6;
+  border-width: 0 0 1px 0;
+}
+td {
+  text-indent: 10px;
+}
+tr {
+  height: 30px;
+}
+tr:hover {
+  background-color: #ececec;
+}
+table tbody,
+table thead {
+  display: block;
+  width: 100%;
+}
+table tbody {
+  overflow: auto;
+  height: calc(100vh - 410px);
+}
+table thead tr th,
+table tbody tr td {
+  width: 123px;
+}
+table thead tr {
+  border: 0px solid #d6d6d6;
+  border-width: 3px 0 0 0;
+}
+.paper-textbox-div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  border-width: 0;
+}
 </style>
