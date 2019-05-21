@@ -11,7 +11,7 @@
             <form>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Doc NO</p>
-                <input class="textbox" type="number" v-model="RefNo" min="1">
+                <input class="textbox" type="number" v-model="DocNo" min="1">
               </div>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Document Type</p>
@@ -56,7 +56,7 @@
               <tr
                 v-for="(data, i) in list"
                 :key="i"
-                @click="ShowResult(data['DocNo']);noselectf();"
+                @click="ShowResult();noselectf();"
               >
                 <td>{{data['DocNo']}}</td>
                 <td>{{data['MovementCode']}}</td>
@@ -75,9 +75,9 @@
       <div class="viewing-div">
         <div
           style="display:flex;align-items:center;height:100%;"
-          v-if="!document"
+          v-if="noselect === true"
         >No document is selected.</div>
-        <div class="doc-paper" v-if="document">
+        <div class="doc-paper" v-if="noselect === false">
           <div>
             <div class="doc-paper-header">
               <div>
@@ -124,11 +124,11 @@
                 <p class="paper-textbox-label">Location:</p>
                 <p class="paper-text-show">{{document['Location']}}</p>
               </div>
-              <div class="paper-textbox-div" v-if="document['CustomerNo']">
+              <div class="paper-textbox-div" v-if="document['CustomerName']">
                 <p class="paper-textbox-label">Customer:</p>
                 <p class="paper-text-show">{{document['CustomerName']}}</p>
               </div>
-              <div class="paper-textbox-div" v-if="document['SupplierNo']">
+              <div class="paper-textbox-div" v-if="document['SupplierName']">
                 <p class="paper-textbox-label">Supplier:</p>
                 <p class="paper-text-show">{{document['SupplierName']}}</p>
               </div>
@@ -147,13 +147,11 @@
                   <th>Location</th>
                 </tr>
 
-                <tr v-for="(data, i) in list" :key="i" @click="showResult(data['ItemName'])">
+                <tr v-for="(data, i) in document_ref" :key="i">
+                  <td>{{data['RefNo']}}</td>
                   <td>{{data['ItemNo']}}</td>
-                  <td>{{data['ItemName']}}</td>
+                  <td>{{data['Qty']}}</td>
                   <td>{{data['Location']}}</td>
-                  <td>{{data['OnHandQty']}}</td>
-                  <td>{{data['Unit']}}</td>
-                  <td>{{data['ItemType']}}</td>
                 </tr>
               </table>
               <div style="display:flex;align-items:flex-end;">
@@ -182,14 +180,15 @@ export default {
   created() {
     this.$emit(`update:layout`, layout_main);
     this.fetchList();
-    this.ShowResult(500);
   },
   data() {
     return {
       list: [],
       document: {},
+      document_ref: [],
       DocNo: "",
-      DocType: ""
+      DocType: "",
+      noselect: true
     };
   },
   components: {
@@ -205,12 +204,13 @@ export default {
     noselectf: function() {
       this.noselect = false;
     },
-    ShowResult: function(DocNo) {
+    ShowResult: function() {
       axios
-        .get("http://localhost/document_show.php?docno=" + DocNo + "$type=" + DocType)
+        .get("http://localhost/document_show.php?docno=" + this.DocNo + "&type=" + this.DocType)
         .then(res => {
           this.document = res.data[0];
-          console.log(this.document);
+          this.document_ref = res.data;
+          console.log(res);
         });
     },
     search: function() {
@@ -223,7 +223,7 @@ export default {
         )
         .then(res => {
           this.list = res.data;
-          console.log(res);
+          console.log(this.list);
         });
     }
   }
