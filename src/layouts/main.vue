@@ -25,6 +25,9 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar { 
+    display: none; 
+}
 .navbar-grid {
   grid-column: span 2;
 }

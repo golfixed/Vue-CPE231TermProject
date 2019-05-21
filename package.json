@@ -4,7 +4,6 @@
   "description": "CPE231 Project",
   "author": "GOLF and team",
   "private": true,
-  "proxy": "http://localhost:4000",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

@@ -45,7 +45,7 @@
                   <div style="display:flex;align-items:flex-end;">
                     <p class="paper-section-text">Item Information</p>
                   </div>
-                  <div style="overflow:scroll;padding:15px;">
+                  <div style="padding:15px;">
                     <div class="paper-textbox-div">
                       <p class="paper-textbox-label">Item NO:</p>
                       <p class="paper-text-show card-label">{{selectdata['ItemNo']}}</p>
