@@ -24,6 +24,7 @@
                         class="textbox"
                         type="number"
                         v-model="movementno"
+                        @change="show();"
                         min="1"
                       >
                     </div>
@@ -112,11 +113,13 @@ export default {
       list: [],
       deliveryman: [],
       movementno: "",
-      employee:""
+      employee:"",
+      test: 'Noy here'
     };
   },
   methods: {
     show: function() {
+      this.test = 'HERE!!!';
       axios
         .get("http://localhost/delivery_show.php?movementno=" + this.movementno)
         .then(res => {

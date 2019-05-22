@@ -4,15 +4,15 @@
       <toolbar pagename="Home"/>
     </div>
     <div class="page-display">
-      <!-- <pagesection icon="fas fa-chart-pie" sectext="Summary"/>
+      <pagesection icon="fas fa-chart-pie" sectext="Summary"/>
       <div class="dashboard">
         <stockgraph labeltext="Overview Stock" style="grid-column: span 2; grid-row: span 2;"/>
         <numbercard value="12K" label="Raw Material Stock"/>
         <numbercard value="20K" label="Produced Good Stock"/>
         <numbercard value="343" label="Order Requested"/>
         <numbercard value="785" label="Good  Requested"/>
-      </div> -->
-      <!-- <pagesection style="margin-top: 20px;" icon="fas fa-cubes" sectext="Menu"/> -->
+      </div>
+      <pagesection style="margin-top: 20px;" icon="fas fa-cubes" sectext="Menu"/>
       <div class="menu-item-box">
         <mitem linkto="/document" icon="fas fa-file-alt" label="Document"/>
         <mitem linkto="/assignment/staff" icon="fas fa-columns" label="Assignment"/>

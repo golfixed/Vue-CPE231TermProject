@@ -32,11 +32,6 @@ const router = new Router({
       }
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
-    },
-    {
       path: '/document',
       name: 'Document',
       component: Document
@@ -94,7 +89,7 @@ const router = new Router({
     },
     {
       path: '/delivery/dashboard',
-      name: 'Delivery',
+      name: 'Delivery Board',
       component: Delivery_board
     },
     {

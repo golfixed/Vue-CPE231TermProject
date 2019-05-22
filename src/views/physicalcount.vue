@@ -154,6 +154,7 @@ export default {
         )
         .then(res => {
           this.selectdata = res.data[0];
+          console.log(res);
         });
     },
     send: function() {

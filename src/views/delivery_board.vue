@@ -12,10 +12,14 @@
                 <p style="width:100px;" class="box-text">Employee NO</p>
                 <select
                   v-model="Employee"
-                  @change="search();callname();"
+                  @change="search();callname();noselectf();"
                   style="width:200px;height:32px;"
                 >
-                  <option v-for="(data,i) in staff_list" :key="i" :value="data['employeeno']">{{data['employeeno']}}  {{data['employeename']}}</option>
+                  <option
+                    v-for="(data,i) in staff_list"
+                    :key="i"
+                    :value="data['employeeno']"
+                  >{{data['employeeno']}} {{data['employeename']}}</option>
                 </select>
               </div>
             </form>
@@ -32,10 +36,19 @@
         <div style=";background-color: #cccccc; overflow:scroll;">
           <div
             style="display:flex;justify-content:center;align-items:center;height:calc(100vh - 200px);font-size:20px;color: grey;"
-            v-if="!Employee"
+            v-if="noselect === true"
           >No selected Employee</div>
-          <div class="order-panel">
+          <div class="order-panel" v-if="noselect === false">
             <div class="order-card2-div" v-for="(data, i) in list" :key="i">
+              <div style="display: flex;justify-content: flex-end;">
+                <button
+                  onClick="window.location.reload();"
+                  @click="update(data['MovementNo']);"
+                  style="border-radius:50%;height:25px;border: 1px solid red;color: red;display: flex;justify-content: flex-end;"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
               <ordercard
                 :DeliveryNo="data['DeliveryNo']"
                 :DocNo="data['DocNo']"
@@ -71,10 +84,11 @@ export default {
     return {
       list: [],
       staff: [],
-      Employee: "",
       staff_list: [],
-      result: "",
-      DeliveryNo: ""
+      Employee: "",
+      updated_result: "",
+      MovementNo: "",
+      noselect: true
     };
   },
   components: {
@@ -96,17 +110,23 @@ export default {
           this.staff = res.data[0];
         });
     },
-    update:function(){
-      axios
-        .get("http://localhost/delivery_update.php?no=" + this.DeliveryNo)
-        .then(res => {
-          this.reusult = res.data[0];
-        });
+    update: function(mov) {
+      axios.get("http://localhost/delivery_update.php?no=" + mov).then(res => {
+        console.log(res);
+        if (res.data === "success") {
+          this.updated_result = "success";
+        } else {
+          this.updated_result = "error";
+        }
+      });
     },
     stafflist: function() {
-      axios.get('http://localhost/delivery_liststaff.php').then(res => {
+      axios.get("http://localhost/delivery_liststaff.php").then(res => {
         this.staff_list = res.data;
-      })
+      });
+    },
+    noselectf: function() {
+      this.noselect = false;
     }
   }
 };

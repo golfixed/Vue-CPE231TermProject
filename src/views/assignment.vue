@@ -12,7 +12,7 @@
                 <p style="width:100px;" class="box-text">Employee NO</p>
                 <select
                   v-model="Employee"
-                  @change="search();callname();"
+                  @change="search();callname();noselectf();"
                   style="width:200px;height:32px;"
                 >
                   <option v-for="(data,i) in staff_list" :key="i" :value="data['employeeno']">{{data['employeeno']}}  {{data['employeename']}}</option>
@@ -32,9 +32,9 @@
         <div style=";background-color: #cccccc; overflow:scroll;">
           <div
             style="display:flex;justify-content:center;align-items:center;height:calc(100vh - 200px);font-size:20px;color: grey;"
-            v-if="!Employee"
+            v-if="noselect === true"
           >No selected Employee</div>
-          <div class="order-panel">
+          <div class="order-panel" v-if="noselect === false">
             <div class="order-card-div" v-for="(data, i) in list" :key="i">
               <ordercard
                 :MovementReason="data['MovementReason']"
@@ -73,7 +73,8 @@ export default {
       list: [],
       staff: [],
       Employee: "",
-      staff_list: []
+      staff_list: [],
+      noselect: true
     };
   },
   components: {
@@ -81,6 +82,9 @@ export default {
     ordercard
   },
   methods: {
+    noselectf: function() {
+      this.noselect = false;
+    },
     search: function() {
       axios
         .get("http://localhost/assignment_search.php?employee=" + this.Employee)

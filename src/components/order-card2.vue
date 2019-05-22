@@ -7,7 +7,7 @@
       <div style="display:flex;align-items:flex-end;">
         <p class="paper-section-text">References</p>
       </div>
-  
+
       <div class="paper-textbox-div">
         <p class="paper-textbox-label">Delivery NO:</p>
         <p class="paper-text-show card-label">{{DeliveryNo}}</p>
@@ -58,7 +58,18 @@
 import btn from "@/components/btn/btn-main.vue";
 export default {
   name: "ordercard",
-  props: ['DeliveryNo','DocNo','MovementNo','ItemName','MoveQty','CustomerName','CustomerAddress','CustomerPhone','CustomerEmail'],
+  props: [
+    "click",
+    "DeliveryNo",
+    "DocNo",
+    "MovementNo",
+    "ItemName",
+    "MoveQty",
+    "CustomerName",
+    "CustomerAddress",
+    "CustomerPhone",
+    "CustomerEmail"
+  ],
   components: {
     btn
   }
@@ -74,7 +85,7 @@ export default {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: 5px;
   padding: 15px;
-  display:grid;
+  display: grid;
   grid-template-rows: auto auto;
 }
 .card-label {
@@ -89,7 +100,6 @@ export default {
   border-width: 0 0 1px 0;
 }
 .type-title {
-  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;

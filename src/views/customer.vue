@@ -29,7 +29,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(data, i) in list" :key="i" @click="showResult(data['CustomerNo']);noselectf();">
+              <tr
+                v-for="(data, i) in list"
+                :key="i"
+                @click="showResult(data['CustomerNo']);noselectf();"
+              >
                 <td>{{data['CustomerNo']}}</td>
                 <td>{{data['CustomerName']}}</td>
               </tr>
@@ -207,7 +211,7 @@ table tbody tr > td:first-child {
   overflow: scroll;
 }
 .doc-paper {
-  background-color: white;
+  background-color: #cccccc;
   height: 100%;
   min-width: 400px;
   width: 100%;
@@ -217,6 +221,8 @@ table tbody tr > td:first-child {
 .doc-paper-grid {
   display: grid;
   grid-template-rows: 20px 50px 50px 50px 50px 50px 80px 50px auto;
+  background-color: white;
+  padding: 15px;
 }
 .paper-section-text {
   margin: 0;

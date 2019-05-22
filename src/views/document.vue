@@ -52,7 +52,18 @@
                 <th>Doc Date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-if="list === 0">
+              <tr
+                v-for="(data, i) in list_onstart"
+                :key="i"
+              >
+                <td>{{data['DocNo']}}</td>
+                <td>{{data['MovementCode']}}</td>
+                <td>{{data['Reccord']}}</td>
+                <td>{{data['DocDate']}}</td>
+              </tr>
+            </tbody>
+            <tbody v-if="list != 0">
               <tr
                 v-for="(data, i) in list"
                 :key="i"
@@ -184,6 +195,7 @@ export default {
   data() {
     return {
       list: [],
+      list_onstart:[],
       document: {},
       document_ref: [],
       DocNo: "",
@@ -198,7 +210,7 @@ export default {
   methods: {
     fetchList: function() {
       axios.get("http://localhost/document_list.php").then(res => {
-        this.list = res.data;
+        this.list_onstart = res.data;
       });
     },
     noselectf: function() {

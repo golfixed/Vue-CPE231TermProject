@@ -30,10 +30,6 @@ export default {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   overflow: hidden;
-  border: 1px solid grey;
-}
-.home-item:hover {
-  border: 1px solid #1764a6;
 }
 .home-item-bg {
   background-color: #efefef;
