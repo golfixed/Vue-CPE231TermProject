@@ -35,18 +35,17 @@
             v-if="!Employee"
           >No selected Employee</div>
           <div class="order-panel">
-            <div class="order-card-div" v-for="(data, i) in list" :key="i">
+            <div class="order-card2-div" v-for="(data, i) in list" :key="i">
               <ordercard
-                :MovementReason="data['MovementReason']"
-                :MovementNo="data['MovementNo']"
-                :RefNo="data['RefNo']"
+                :DeliveryNo="data['DeliveryNo']"
                 :DocNo="data['DocNo']"
-                :ItemNo="data['ItemNo']"
+                :MovementNo="data['MovementNo']"
                 :ItemName="data['ItemName']"
                 :MoveQty="data['MoveQty']"
-                :Location="data['Location']"
-                :MoveDate="data['MoveDate']"
-                :EmployeeName="data['EmployeeName']"
+                :CustomerName="data['CustomerName']"
+                :CustomerAddress="data['CustomerAddress']"
+                :CustomerPhone="data['CustomerPhone']"
+                :CustomerEmail="data['CustomerEmail']"
               />
             </div>
           </div>
@@ -59,7 +58,7 @@
 <script>
 import layout_main from "@/layouts/main.vue";
 import toolbar from "@/components/toolbar.vue";
-import ordercard from "@/components/order-card.vue";
+import ordercard from "@/components/order-card2.vue";
 import axios from "axios";
 export default {
   name: "deliveryboard",
@@ -73,7 +72,9 @@ export default {
       list: [],
       staff: [],
       Employee: "",
-      staff_list: []
+      staff_list: [],
+      result: "",
+      DeliveryNo: ""
     };
   },
   components: {
@@ -86,7 +87,6 @@ export default {
         .get("http://localhost/delivery_search.php?employee=" + this.Employee)
         .then(res => {
           this.list = res.data;
-          console.log(res);
         });
     },
     callname: function() {
@@ -94,6 +94,13 @@ export default {
         .get("http://localhost/delivery_name.php?employee=" + this.Employee)
         .then(res => {
           this.staff = res.data[0];
+        });
+    },
+    update:function(){
+      axios
+        .get("http://localhost/delivery_update.php?no=" + this.DeliveryNo)
+        .then(res => {
+          this.reusult = res.data[0];
         });
     },
     stafflist: function() {
@@ -130,14 +137,14 @@ export default {
   white-space: nowrap;
   height: 100%;
 }
-.order-card-div {
+.order-card2-div {
   width: 390px;
   display: inline-block;
 }
-.order-panel > .order-card-div:first-child {
+.order-panel > .order-card2-div:first-child {
   margin-left: 10px;
 }
-.order-panel > .order-card-div:last-child {
+.order-panel > .order-card2-div:last-child {
   margin-right: 10px;
 }
 </style>
