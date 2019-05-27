@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from '@/views/home'
 const Home = () => import('@/views/home')
-import Dashboard from '@/views/dashboard'
 import Document from '@/views/document'
 import Assignment from '@/views/assignment'
 import Assignment_list from '@/views/assignment_list'
@@ -14,6 +13,9 @@ import Adjust from '@/views/adjust'
 import Transfer from '@/views/transfer'
 import CountList from '@/views/count_list'
 import Delivery_board from '@/views/delivery_board'
+import Move from '@/views/move'
+import Summary from '@/views/summary'
+
 // import Delivery from '@/views/Delivery'
 const Delivery = () => import('@/views/Delivery')
 
@@ -35,6 +37,11 @@ const router = new Router({
       path: '/document',
       name: 'Document',
       component: Document
+    },
+    {
+      path: '/summary',
+      name: 'summary',
+      component: Summary
     },
     {
       path: '/assignment/staff',
@@ -96,6 +103,11 @@ const router = new Router({
       path: '/countlist',
       name: 'Count List',
       component: CountList
+    },
+    {
+      path: '/move',
+      name: 'Move',
+      component: Move
     }
   ]
 })

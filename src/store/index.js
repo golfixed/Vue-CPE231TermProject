@@ -5,11 +5,17 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: () => ({
-        a: 1,
-        user: 'admin'
+        user: {
+            photo: 'https://uppic.cc/d/KE3m',
+            employeeno: '000011',
+            employeename: 'Godfather',
+            department: 'Managing',
+            position: 'CEO'
+        }
     }),
     mutations: {
-        INCREMENT: (state) => state.a += 1
+        SWITCH_ROLE: (state, role) =>  state.user.role = role,
+        CHANGE_USER: (state, user) => state.user = user
     }
 })
 

@@ -3,9 +3,9 @@
     <div class="toolbar-div-left">
       <h3 class="page-title">{{pagename}}</h3>
     </div>
-    <div v-if="pagename === 'Home'" class="toolbar-div-right">
+
+    <div v-if="pagename === 'Summary'" class="toolbar-div-right">
       <toolbaritem icon="fa fa-sync" label="refresh"/>
-      <toolbaritem icon="fa fa-sign-out-alt" label="log out"/>
     </div>
     <div v-if="pagename === 'Document'" class="toolbar-div-right">
       <div
@@ -21,6 +21,10 @@
       </div>
     </div>
     <div v-if="pagename === 'Assignment'" class="toolbar-div-right">
+      <toolbaritem icon="fa fa-sync" label="refresh"/>
+      <toolbaritem icon="fa fa-sign-out-alt" label="log out"/>
+    </div>
+    <div v-if="pagename === 'Delivery Board'" class="toolbar-div-right">
       <toolbaritem icon="fa fa-sync" label="refresh"/>
       <toolbaritem icon="fa fa-sign-out-alt" label="log out"/>
     </div>

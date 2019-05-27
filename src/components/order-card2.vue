@@ -1,5 +1,5 @@
 <template>
-  <div class="order-card2">
+  <div class="order-card2" style="margin-top: -35px;">
     <div>
       <div class="type-title">
         <h4>Sale Order</h4>

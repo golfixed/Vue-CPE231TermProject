@@ -40,7 +40,9 @@
           >No selected Employee</div>
           <div class="order-panel" v-if="noselect === false">
             <div class="order-card2-div" v-for="(data, i) in list" :key="i">
-              <div style="display: flex;justify-content: flex-end;">
+              <div style="display: flex;justify-content: flex-end;    z-index: 100;
+    margin-top: 25px;
+    margin-right: 21px;">
                 <button
                   onClick="window.location.reload();"
                   @click="update(data['MovementNo']);"

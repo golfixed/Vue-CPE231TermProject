@@ -38,11 +38,6 @@
                 <td>{{data['CustomerName']}}</td>
               </tr>
             </tbody>
-            <tr>
-              <td style="width:360px;">
-                <p style="padding:0;margin:0;">Showing: 0 items from all 40</p>
-              </td>
-            </tr>
           </table>
         </div>
       </div>

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "label",
+  name: "boxlabel",
   props: ["labeltext"]
 };
 </script>
@@ -19,6 +19,7 @@ export default {
   color: #495057;
   font-weight: bold;
   background-color: rgb(232, 232, 232);
+  text-transform: uppercase;
 }
 .text-align {
   display: flex;

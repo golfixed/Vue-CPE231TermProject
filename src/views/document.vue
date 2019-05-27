@@ -11,11 +11,11 @@
             <form>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Doc NO</p>
-                <input class="textbox" type="number" v-model="DocNo" min="1">
+                <input class="textbox" type="number" v-model="DocNoSearch" min="1">
               </div>
               <div style="display: flex; margin: 10px 0;">
                 <p class="box-text">Document Type</p>
-                <select v-model="DocType" @change="search();" style="width:250px;height:32px;">
+                <select v-model="DocTypeSearch" @change="search();" style="width:250px;height:32px;">
                   <option value>Select Document Type</option>
                   <option value="POO">Purchase PO</option>
                   <option value="PRT">Purchase Return</option>
@@ -35,10 +35,6 @@
                   <option value="TFO">Tranfer Out</option>
                 </select>
               </div>
-              <!-- <div style="display: flex; justify-content:flex-end;">
-                <button class="btn-refresh" @click="fetchList()">Clear</button>
-                <button style="margin-left: 10px;" class="btn-refresh" @click="search()">Search</button>
-              </div>-->
             </form>
           </div>
         </div>
@@ -48,26 +44,15 @@
               <tr>
                 <th>Doc No</th>
                 <th>Doc Type</th>
-                <th>Reccord</th>
+                <th>Record</th>
                 <th>Doc Date</th>
               </tr>
             </thead>
-            <tbody v-if="list === 0">
-              <tr
-                v-for="(data, i) in list_onstart"
-                :key="i"
-              >
-                <td>{{data['DocNo']}}</td>
-                <td>{{data['MovementCode']}}</td>
-                <td>{{data['Reccord']}}</td>
-                <td>{{data['DocDate']}}</td>
-              </tr>
-            </tbody>
             <tbody v-if="list != 0">
               <tr
                 v-for="(data, i) in list"
                 :key="i"
-                @click="ShowResult();noselectf();"
+                @click="ShowResult(data.DocNo,data.MovementCode);noselectf();"
               >
                 <td>{{data['DocNo']}}</td>
                 <td>{{data['MovementCode']}}</td>
@@ -75,11 +60,6 @@
                 <td>{{data['DocDate']}}</td>
               </tr>
             </tbody>
-            <tr>
-              <td style="width:360px;">
-                <p style="padding:0;margin:0;">Showing: 4 items from all 600</p>
-              </td>
-            </tr>
           </table>
         </div>
       </div>
@@ -185,6 +165,7 @@ import toolbar from "@/components/toolbar.vue";
 import layout_main from "@/layouts/main.vue";
 import btn from "@/components/btn/btn-main.vue";
 import axios from "axios";
+import { constants } from 'fs';
 
 export default {
   name: "document",
@@ -195,11 +176,10 @@ export default {
   data() {
     return {
       list: [],
-      list_onstart:[],
       document: {},
-      document_ref: [],
-      DocNo: "",
-      DocType: "",
+      document_ref: {},
+      DocNoSearch: "",
+      DocTypeSearch: "",
       noselect: true
     };
   },
@@ -210,32 +190,36 @@ export default {
   methods: {
     fetchList: function() {
       axios.get("http://localhost/document_list.php").then(res => {
-        this.list_onstart = res.data;
+        this.list = res.data;
       });
     },
     noselectf: function() {
-      this.noselect = false;
+      this.noselect = true;
+      if (this.noselect == false ) {
+        this.noselect = true;
+      }
+      else {
+        this.noselect = false;
+      }
     },
-    ShowResult: function() {
+    ShowResult: function(docno, doctype) {
       axios
-        .get("http://localhost/document_show.php?docno=" + this.DocNo + "&type=" + this.DocType)
+        .get("http://localhost/document_show.php?docno=" + docno + "&type=" + doctype)
         .then(res => {
           this.document = res.data[0];
           this.document_ref = res.data;
-          console.log(res);
         });
     },
     search: function() {
       axios
         .get(
           "http://localhost/document_search.php?docno=" +
-            this.DocNo +
+            this.DocNoSearch +
             "&type=" +
-            this.DocType
+            this.DocTypeSearch
         )
         .then(res => {
           this.list = res.data;
-          console.log(this.list);
         });
     }
   }

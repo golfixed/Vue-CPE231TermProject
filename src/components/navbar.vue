@@ -3,69 +3,56 @@
     <div class="row" style="width:100%;">
       <div class="col-6">
         <h5 style="margin-bottom:0px;">
-          <b>Warehouse Management I</b>
+          <b>Warehouse Management II</b>
         </h5>
       </div>
       <div class="col-6 d-flex flex-row justify-content-end" style="    padding: 0px;">
-        <div class="d-flex justify-content-end align-items-center" style="padding: 0px 10px;">
-          <!-- <vue-dropdown :config="config"></vue-dropdown> -->
-          Mode:
-          <select
-            style="background-color: transparent;color: white;border: 0px;font-weight: bold; margin-left:10px;"
-          >
-            <option value="manager">
-              <b>Manager</b>
-            </option>
-            <option>
-              <b>Saler</b>
-            </option>
-            <option>
-              <b>Staff</b>
-            </option>
-            <option>
-              <b>Supervisor</b>
-            </option>
-          </select>
-        </div>
-        <div
-          class="d-flex justify-content-center align-items-center"
-          style="border: 1px solid #ffffff;border-width: 0px 0px 0px 1px;padding: 0px 10px;"
-        >
-          <i class="fas fa-user" style="margin-right: 10px;"></i>Dummy User
-          <!-- <i class="fas fa-chevron-down" style="margin-left: 10px;"></i> -->
-        </div>
+          <div class="d-flex justify-content-end align-items-center" style="padding: 0px 10px;">
+            <i class="fas fa-user" style="margin-right: 10px;"></i> User:
+            <select
+              style="background-color: transparent;color: white;border: 0px;font-weight: bold; margin-left:10px;"
+              v-model="selectedUser"
+            >
+              <option v-for="(user, i) in staffList" :key="i" :value="i">
+                <b>{{user['employeeno']}}</b>
+                <b>{{user['employeename']}}</b>
+                <b>({{user['position']}})</b>
+              </option>
+            </select>
+          </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import VueDropdown from "vue-dynamic-dropdown";
+import axios from 'axios';
 export default {
   name: "navbar",
+  created() {
+    this.staffListing();
+  },
+  data: () => ({
+    staffList:{},
+    selectedUser: 0
+  }),
   components: {
-    // VueDropdown
+  },
+  watch: {
+    selectedUser: function(newVal, oldVal) {
+      this.$store.commit('CHANGE_USER', this.staffList[this.selectedUser])
+      // this.$store.state.user.role
+    },
+  },
+  methods: {
+    staffListing: function() {
+      axios.get("http://localhost/role_stafflist.php").then(res => {
+        this.staffList = res.data;
+        console.log(res.data)
+      });
+    },
   }
-  // data: function() {
-  //   return {
-  //     config: {
-  //       options: [
-  //         {
-  //           value: "option 1"
-  //         },
-  //         {
-  //           value: "option 2"
-  //         },
-  //         {
-  //           value: "option 3"
-  //         }
-  //       ],
-  //       prefix: "The",
-  //       backgroundColor: "green"
-  //     }
-  //   };
-  // }
-};
+}
 </script>
 
 <style scoped>

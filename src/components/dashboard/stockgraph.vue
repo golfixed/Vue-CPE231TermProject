@@ -1,39 +1,29 @@
-<template>
-  <div class="home-item graphcard">
-    <div class="home-dash-bg">Summary graph will be shown here</div>
-    <div class="labeltext">{{labeltext}}</div>
-  </div>
-</template>
-
 <script>
 import itemlabel from "@/components/itemlabel.vue";
+import { Pie, mixins } from "vue-chartjs";
+import axios from "axios";
+import { constants } from "fs";
+const { reactiveProp } = mixins;
+
 export default {
-  name: "stockgraph",
-  props: ["labeltext"],
-  components: {
-    itemlabel
+  extends: Pie,
+  props: ['data','options'],
+  mounted () {
+    this.renderChart(this.data, this.options)
+  },
+  watch: {
+    data: function (newVal, oldVal) {
+      this.renderChart(this.data, this.options)
+    }
   }
 };
 </script>
 
 <style scoped>
-.graphcard {
-  height: 100%;
-}
-.home-dash-bg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100% - 30px);
-  background-color: #efefef;
-  width: 100%;
-  color: #495057;
-}
-.labeltext {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  height: 30px;
-}
+canvas {
+  display: flex !important;
+  max-height: 100% !important;
+  width: auto !important;
+  margin: auto;
+} 
 </style>

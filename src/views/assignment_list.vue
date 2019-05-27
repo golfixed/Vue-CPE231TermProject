@@ -12,7 +12,7 @@
           style="display:flex;justify-content: space-between;align-items:center;"
         >
           <h5 style="margin:0px;padding-right:20px;">On Going Work Orders</h5>
-          <div>
+          <!-- <div>
             <input
               style="margin-right: 5px;height:32px;"
               type="text"
@@ -20,7 +20,7 @@
               placeholder="Movement NO"
             >
             <btn text="Search" color="btn-refresh"/>
-          </div>
+          </div> -->
         </div>
         <div style="overflow:scroll;padding:0 15px;">
           <table style="width:100%;">

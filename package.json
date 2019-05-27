@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "chart.js": "^2.8.0",
     "firebase": "^6.0.2",
     "moment": "^2.24.0",
     "vue": "^2.5.2",
+    "vue-chartjs": "^3.4.2",
     "vue-dynamic-dropdown": "^1.0.9",
     "vue-google-charts": "^0.3.2",
     "vue-graph": "^0.8.4",

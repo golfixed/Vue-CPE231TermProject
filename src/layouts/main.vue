@@ -137,7 +137,7 @@ table thead {
 }
 table tbody {
   overflow: auto;
-  height: calc(100vh - 362px);
+  height: calc(100vh - 314px);
 }
 table thead tr th,
 table tbody tr td {
@@ -209,5 +209,42 @@ table thead tr {
 .mb-red{
     background-color: #ff52522b;
     border: 1px solid #ff52524f;
+}
+.home-item {
+  background-color: #efefef;
+  border-radius: 6px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+.home-item-bg {
+  background-color: #efefef;
+  height: 120px;
+  width: 100%;
+  color: #495057;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-item:hover > .home-item-bg {
+  background-color: #207fd0;
+  transition: all 0.5s;
+  color: white;
+}
+.home-item-label {
+  background-color: #e4e4e4;
+  height: 30px;
+  width: 100%;
+  color: #495057;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-item:hover > .home-item-label {
+  background-color: #1764a7;
+  transition: all 0.5s;
+  color: white;
+  font-weight: bold;
 }
 </style>

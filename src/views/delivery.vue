@@ -8,7 +8,7 @@
         <div class>
           <div class="addingbar">
             <div class="section-side-text">
-              <h5 style="margin:0px;padding-right:20px;">Not delivery yet</h5>
+              <h5 style="margin:0px;padding-right:20px;">Delivery Detail</h5>
             </div>
             <div>
               <form>
@@ -29,7 +29,7 @@
                       >
                     </div>
                     <div style="display:flex; justify-content:flex-end;">
-                      <button class="btn-refresh" @click="show();" style="margin-left:10px;">Select</button>
+                      <button class="btn-refresh" @click="show();" style="margin-left:10px;">Search</button>
                     </div>
                   </div>
 
@@ -81,11 +81,11 @@
                 >
                   <option v-for="(dataman,i) in deliveryman" :key="i" :value="dataman['employeeno']">{{dataman['employeeno']}}  {{dataman['employeename']}}</option>
                 </select>
-                  <div style="display:flex; justify-content:flex-end;">
-                      <button class="btn-refresh" @click="save();" onClick="window.location.reload();" style="margin-left:10px;">Assign</button>
-                  </div>
             </div>
           </div>
+                  <div style="margin: 15px 0;display:flex; justify-content:flex-end;">
+                      <button class="btn-refresh" @click="save();" onClick="window.location.reload();" style="margin-left:10px;">Assign</button>
+                  </div>
         </div>
       </div>
     </div>

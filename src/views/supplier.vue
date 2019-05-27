@@ -38,11 +38,6 @@
                 <td>{{data['SupplierName']}}</td>
               </tr>
             </tbody>
-            <tr>
-              <td style="width:360px;">
-                <p style="padding:0;margin:0;">Showing: 3 items from all 40</p>
-              </td>
-            </tr>
           </table>
         </div>
       </div>
@@ -68,7 +63,7 @@
               style="display:block;grid-row: span 8;background-color: #f3f3f3;margin-left: 10px;"
             >
               <div class="suplier-logo">
-                <img :src="result['SupplierLogo']" style="width:200px;height:200px;">
+                <img :src="result['SupplierLogo']" class="sup-logo-img">
               </div>
             </div>
             <div class="paper-textbox-div">
@@ -264,5 +259,12 @@ table tbody tr > td:first-child {
   margin-top: 10px;
   display: flex;
   justify-content: center;
+}
+.sup-logo-img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 </style>
