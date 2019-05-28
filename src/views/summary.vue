@@ -29,6 +29,7 @@
                 <span class="labeltext" style="margin-left:20px;">{{data['ReturnType']}}</span>
               </div>
             </div>
+
           </div>
         </div>
         <numbercard2
@@ -106,6 +107,49 @@
             </div>
           </div>
         </div>
+        <div style="overflow:hidden;border-radius:6px;background-color: #efefef;grid-row: span 2;">
+          <itemlabel labeltext="most assigned delivery man"/>
+          <div style="height:calc(100% - 30px);padding:10px;">
+            <div style="display: flex;justify-content: center;align-items: center; margin:20px ;">
+              <img :src="maxWorkedDelivery['photo']" style="height:70px;border-radius:1000000px;">
+            </div>
+            <div class="staff-info">
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width:200px;">Employee NO:</p>
+                <p class="paper-text-show card-label">{{maxWorkedDelivery['EmployeeNo']}}</p>
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width:200px;">Employee Name:</p>
+                <p class="paper-text-show card-label">{{maxWorkedDelivery['EmployeeName']}}</p>
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width:200px;">Assignments:</p>
+                <p class="paper-text-show card-label">{{maxWorkedDelivery['CountAssignment']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="overflow:hidden;border-radius:6px;background-color: #efefef;">
+          <itemlabel labeltext="top supplier"/>
+          <div style="height:calc(100% - 30px);padding:10px;">
+            <div class="staff-info">
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width:200px;">Supplier Name:</p>
+                <p class="paper-text-show card-label">{{supplierTotal['SupplierName']}}</p>
+              </div>
+              <div class="paper-textbox-div">
+                <p class="paper-textbox-label" style="width:200px;">Quantity :</p>
+                <p class="paper-text-show card-label">{{supplierTotal['Qty']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <numbercard
+          :value1="totalSup['Total']"
+          icon="fa fa-users"
+          label0="total supplier"
+          label1="Suppliers"
+        />
         <div style="overflow:hidden;border-radius:6px;background-color: #efefef;">
           <itemlabel labeltext="top customer"/>
           <div style="height:calc(100% - 30px);padding:10px;">
@@ -131,25 +175,7 @@
           style="grid-column: span 2;background-color: #efefef;overflow: hidden;border-radius: 6px;"
         >
           <div class="display home-item">
-            <itemlabel labeltext="supplier"/>
-            <!-- <div class="inner-display-in">
-              <div
-                class="numbercard home-dash-font-div"
-                v-for="(transCount, i) in transCount"
-                :key="i"
-              >
-                <span class="home-dash-font" v-if="transCount['MovementType'] === 'in'">
-                  <i class="fa fa-arrow-down" style="font-size:50px; margin-right:20px;"></i>
-                  {{transCount['TransactionCount']}}
-                </span>
-                <span class="home-dash-font" v-if="transCount['MovementType'] === 'out'">
-                  <i class="fa fa-arrow-up" style="font-size:50px; margin-right:20px;"></i>
-                  {{transCount['TransactionCount']}}
-                </span>
-                <span class="labeltext" v-if="transCount['MovementType'] === 'in'">Goods In</span>
-                <span class="labeltext" v-if="transCount['MovementType'] === 'out'">Goods Out</span>
-              </div>
-            </div> -->
+            <itemlabel labeltext="top 3 supplier"/>
           </div>
           <div style="padding:6px;">
             <div class="trans-location">
@@ -169,25 +195,7 @@
           style="grid-column: span 2;background-color: #efefef;overflow: hidden;border-radius: 6px;"
         >
           <div class="display home-item">
-            <itemlabel labeltext="customer"/>
-            <!-- <div class="inner-display-in">
-              <div
-                class="numbercard home-dash-font-div"
-                v-for="(transCount, i) in transCount"
-                :key="i"
-              >
-                <span class="home-dash-font" v-if="transCount['MovementType'] === 'in'">
-                  <i class="fa fa-arrow-down" style="font-size:50px; margin-right:20px;"></i>
-                  {{transCount['TransactionCount']}}
-                </span>
-                <span class="home-dash-font" v-if="transCount['MovementType'] === 'out'">
-                  <i class="fa fa-arrow-up" style="font-size:50px; margin-right:20px;"></i>
-                  {{transCount['TransactionCount']}}
-                </span>
-                <span class="labeltext" v-if="transCount['MovementType'] === 'in'">Goods In</span>
-                <span class="labeltext" v-if="transCount['MovementType'] === 'out'">Goods Out</span>
-              </div>
-            </div> -->
+            <itemlabel labeltext="top 3 customer"/>
           </div>
           <div style="padding:6px;">
             <div class="trans-location">
@@ -246,10 +254,13 @@ export default {
     this.shipping_Count();
     this.inventory_maxStore();
     this.maxWorkedStaff_f();
+    this.maxWorkedDelivery_f();
     this.totalCustomer();
     this.topCustomer();
     this.top3Supplier();
     this.customerListing();
+    this.supplierTotal_f();
+    this.totalSup_f();
   },
   data() {
     return {
@@ -263,10 +274,13 @@ export default {
       shippingCount: {},
       maxStore: {},
       maxWorkedStaff: {},
+      maxWorkedDelivery: {},
       customerCount: {},
       topCustomerData: {},
       topSupplier: {},
-      customerList:{}
+      customerList:{},
+      supplierTotal:{},
+      totalSup:{}
     };
   },
   methods: {
@@ -304,6 +318,11 @@ export default {
         this.topCustomerData = res.data[0];
       });
     },
+    totalSup_f: function() {
+      axios.get("http://localhost/summary_supplier4.php").then(res => {
+        this.totalSup = res.data[0];
+      });
+    },
     customerListing: function() {
       axios.get("http://localhost/summary_customer.php").then(res => {
         this.customerList = res.data;
@@ -324,10 +343,20 @@ export default {
         this.maxWorkedStaff = res.data[0];
       });
     },
+    maxWorkedDelivery_f: function() {
+      axios.get("http://localhost/summary_staff2.php").then(res => {
+        this.maxWorkedDelivery = res.data[0];
+      });
+    },
     totalCustomer: function() {
       axios.get("http://localhost/summary_customer2.php").then(res => {
         this.customerCount = res.data[0];
         console.log(res.data);
+      });
+    },
+    supplierTotal_f: function() {
+      axios.get("http://localhost/summary_supplier3.php").then(res => {
+        this.supplierTotal = res.data[0];
       });
     },
     return_reason_detail: function() {
